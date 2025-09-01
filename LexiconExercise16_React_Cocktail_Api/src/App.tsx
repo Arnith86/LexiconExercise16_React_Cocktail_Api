@@ -1,3 +1,5 @@
+import { Outlet } from "react-router";
+import { Header } from "./components/Header";
 import { mapRawCocktailData } from "./mapRawCocktailData";
 
 const fetchDrinks = async (): Promise<object> => {
@@ -13,7 +15,12 @@ const fetchDrinks = async (): Promise<object> => {
 
 function App() {
   fetchDrinks();
-  return <></>;
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  );
 }
 
 export default App;
