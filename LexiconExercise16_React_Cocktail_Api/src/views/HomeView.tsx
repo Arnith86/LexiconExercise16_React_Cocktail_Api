@@ -4,6 +4,7 @@ import { CocktailCard } from "../components/CocktailCard";
 import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { fetchSingleCocktail } from "../api-fetcher";
+import { Spinner } from "../components/Spinner";
 
 export const HomeView = () => {
   const [randomCocktail, setRandomCocktail] = useState<ICocktail | null>(null);
@@ -17,7 +18,7 @@ export const HomeView = () => {
   }, []);
 
   return (
-    <main>
+    <main className="home-page">
       <p>This is the homeView!</p>
       <nav>
         {/**Here for testing */}
@@ -26,8 +27,11 @@ export const HomeView = () => {
         </NavLink>
       </nav>
 
-      {/** ToDo: Add a loader here!!!!!!!!!! */}
-      {randomCocktail ? <CocktailCard cocktail={randomCocktail} /> : ""}
+      {randomCocktail ? (
+        <CocktailCard cocktail={randomCocktail} />
+      ) : (
+        <Spinner />
+      )}
       <Button
         buttonType="button"
         className="random-cocktail-button"

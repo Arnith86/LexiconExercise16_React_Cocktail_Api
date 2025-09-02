@@ -1,10 +1,13 @@
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 import type { ICocktail } from "../mapRawCocktailData";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactElement, type ReactNode } from "react";
 import { fetchSingleCocktail } from "../api-fetcher";
+import { Image } from "../components/Image";
 
 export const CocktailInfoView = () => {
   const { id } = useParams();
+
+  if (id === undefined) return <Navigate replace to="/" />;
 
   const [cocktail, setCocktail] = useState<ICocktail | null>(null);
 
@@ -17,9 +20,22 @@ export const CocktailInfoView = () => {
       .catch((err) => console.log("Error fetching cocktail", err));
   }, []);
 
-  return (
-    <main>
-      <p>{cocktail?.category}</p>
-    </main>
-  );
+  function renderCocktailInfo(): ReactElement {
+    if (!cocktail) return <div className="loader"></div>;
+
+    return (
+      <>
+        <Image
+          className="cocktail-thumbnail"
+          url={cocktail?.thumbnail}
+          altText=""
+        />
+        <h2>{cocktail?.name}</h2>
+        <p>Category: {cocktail?.category}</p>
+        <section className="instructions">{cocktail?.thumbnail}</section>
+      </>
+    );
+  }
+
+  return <main className="cocktail-info-page">{renderCocktailInfo()} </main>;
 };
