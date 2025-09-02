@@ -4,6 +4,7 @@ import { useEffect, useState, type ReactElement, type ReactNode } from "react";
 import { fetchSingleCocktail } from "../api-fetcher";
 import { Image } from "../components/Image";
 import { TagButtons } from "../components/TagButtons";
+import { Instructions } from "../components/Instruction";
 
 export const CocktailInfoView = () => {
   const { id } = useParams();
@@ -34,6 +35,11 @@ export const CocktailInfoView = () => {
         <h2>{cocktail.name}</h2>
         <p>Category: {cocktail.category}</p>
         <TagButtons tags={cocktail.tags} />
+
+        <section className="instructions">
+          <Instructions header="Instructions" content={cocktail.instructions} />
+          <Instructions header="Glass" content={cocktail.glass} />
+        </section>
       </>
     );
   }
