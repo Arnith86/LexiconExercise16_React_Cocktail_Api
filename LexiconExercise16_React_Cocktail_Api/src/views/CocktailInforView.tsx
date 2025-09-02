@@ -5,6 +5,7 @@ import { fetchSingleCocktail } from "../api-fetcher";
 import { Image } from "../components/Image";
 import { TagButtons } from "../components/TagButtons";
 import { Instructions } from "../components/Instruction";
+import { Ingredients } from "../components/Ingredients";
 
 export const CocktailInfoView = () => {
   const { id } = useParams();
@@ -27,12 +28,13 @@ export const CocktailInfoView = () => {
 
     return (
       <>
+        <Ingredients ingredients={cocktail.ingredients} />
+        <h2>{cocktail.name}</h2>
         <Image
           className="cocktail-thumbnail"
           url={cocktail.thumbnail}
-          altText=""
+          altText={`Image of ${cocktail.name}`}
         />
-        <h2>{cocktail.name}</h2>
         <p>Category: {cocktail.category}</p>
         <TagButtons tags={cocktail.tags} />
 

@@ -14,3 +14,7 @@ export async function fetchSingleCocktail(id?: number): Promise<ICocktail> {
 
   return cocktail;
 }
+
+export function fetchIngredientImage(name: string): string {
+  return `https://www.thecocktaildb.com/images/ingredients/${name}-small.png`;
+}

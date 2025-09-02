@@ -13,7 +13,7 @@ export function CocktailCard({ cocktail }: ICocktailProp): ReactElement {
       <Image
         className={"cocktail-image"}
         url={cocktail.thumbnail}
-        altText={""}
+        altText={`image of a ${cocktail.name}`}
       />
 
       <h2 className="cocktail-name">{cocktail.name}</h2>
