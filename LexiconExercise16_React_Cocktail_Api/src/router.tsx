@@ -15,7 +15,7 @@ export const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index element={<HomeView />} />
       <Route path="/search" element={<SearchView />} />
-      <Route path="/cocktailinfo" element={<CocktailInfoView />} />
+      <Route path="/cocktailinfo/:id" element={<CocktailInfoView />} />
       <Route path="/favorites" element={<FavoritesView />} />
       <Route path="/ingredient" element={<IngredientView />} />
     </Route>

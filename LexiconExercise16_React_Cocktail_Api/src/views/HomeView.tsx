@@ -1,15 +1,15 @@
 import { NavLink } from "react-router";
-import { fetchRandomCocktail } from "../api-fetcher";
 import type { ICocktail } from "../mapRawCocktailData";
 import { CocktailCard } from "../components/CocktailCard";
 import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
+import { fetchSingleCocktail } from "../api-fetcher";
 
 export const HomeView = () => {
   const [randomCocktail, setRandomCocktail] = useState<ICocktail | null>(null);
 
   const getRandomCocktail = async () => {
-    fetchRandomCocktail().then(setRandomCocktail);
+    fetchSingleCocktail().then(setRandomCocktail);
   };
 
   useEffect(() => {
@@ -21,15 +21,12 @@ export const HomeView = () => {
       <p>This is the homeView!</p>
       <nav>
         {/**Here for testing */}
-        <NavLink className="link" to="/cocktailinfo">
-          Cocktail Info
-        </NavLink>
-
         <NavLink className="link" to="/ingredient">
           Ingredient Info
         </NavLink>
       </nav>
 
+      {/** ToDo: Add a loader here!!!!!!!!!! */}
       {randomCocktail ? <CocktailCard cocktail={randomCocktail} /> : ""}
       <Button
         buttonType="button"
