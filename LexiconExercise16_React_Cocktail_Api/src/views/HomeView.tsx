@@ -3,12 +3,17 @@ import { fetchRandomCocktail } from "../api-fetcher";
 import type { ICocktail } from "../mapRawCocktailData";
 import { CocktailCard } from "../components/CocktailCard";
 import { useEffect, useState } from "react";
+import { Button } from "../components/Button";
 
 export const HomeView = () => {
   const [randomCocktail, setRandomCocktail] = useState<ICocktail | null>(null);
 
-  useEffect(() => {
+  const getRandomCocktail = async () => {
     fetchRandomCocktail().then(setRandomCocktail);
+  };
+
+  useEffect(() => {
+    getRandomCocktail();
   }, []);
 
   return (
@@ -26,6 +31,13 @@ export const HomeView = () => {
       </nav>
 
       {randomCocktail ? <CocktailCard cocktail={randomCocktail} /> : ""}
+      <Button
+        buttonType="button"
+        className="random-cocktail-button"
+        onClick={getRandomCocktail}
+      >
+        New random cocktail!
+      </Button>
     </main>
   );
 };
