@@ -3,6 +3,7 @@ import type { ICocktail } from "../mapRawCocktailData";
 import { useEffect, useState, type ReactElement, type ReactNode } from "react";
 import { fetchSingleCocktail } from "../api-fetcher";
 import { Image } from "../components/Image";
+import { TagButtons } from "../components/TagButtons";
 
 export const CocktailInfoView = () => {
   const { id } = useParams();
@@ -27,12 +28,12 @@ export const CocktailInfoView = () => {
       <>
         <Image
           className="cocktail-thumbnail"
-          url={cocktail?.thumbnail}
+          url={cocktail.thumbnail}
           altText=""
         />
-        <h2>{cocktail?.name}</h2>
-        <p>Category: {cocktail?.category}</p>
-        <section className="instructions">{cocktail?.thumbnail}</section>
+        <h2>{cocktail.name}</h2>
+        <p>Category: {cocktail.category}</p>
+        <TagButtons tags={cocktail.tags} />
       </>
     );
   }
