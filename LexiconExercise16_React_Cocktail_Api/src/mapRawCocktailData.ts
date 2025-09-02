@@ -7,12 +7,12 @@
  * you won’t need.
  */
 
-interface IIngredient {
+export interface IIngredient {
   ingredient: string;
   measure: string | null;
 }
 
-interface ICocktail {
+export interface ICocktail {
   id: string;
   name: string;
   tags: string[];
@@ -28,9 +28,9 @@ export function mapRawCocktailData(rawCocktail: any): ICocktail {
   return {
     id: rawCocktail.idDrink,
     name: rawCocktail.strDrink,
-    tags: rawCocktail.strTags ? rawCocktail.strTags.split(',') : [],
+    tags: rawCocktail.strTags ? rawCocktail.strTags.split(",") : [],
     category: rawCocktail.strCategory,
-    alcoholic: rawCocktail.strAlcoholic === 'Alcoholic',
+    alcoholic: rawCocktail.strAlcoholic === "Alcoholic",
     glass: rawCocktail.strGlass,
     instructions: rawCocktail.strInstructions,
     thumbnail: rawCocktail.strDrinkThumb,
