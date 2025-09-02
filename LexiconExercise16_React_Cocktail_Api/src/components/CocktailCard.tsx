@@ -1,5 +1,7 @@
 import type { ReactElement } from "react";
 import type { ICocktail } from "../mapRawCocktailData";
+import { NavLink } from "react-router";
+import { Image } from "./Image";
 
 interface ICocktailProp {
   cocktail: ICocktail;
@@ -8,13 +10,21 @@ interface ICocktailProp {
 export function CocktailCard({ cocktail }: ICocktailProp): ReactElement {
   return (
     <article className="cocktail-card">
-      <figure className="cocktail-figure">
-        <img className="cocktail-image" src={cocktail.thumbnail} />
-      </figure>
+      <Image
+        className={"cocktail-image"}
+        url={cocktail.thumbnail}
+        altText={""}
+      />
 
       <h2 className="cocktail-name">{cocktail.name}</h2>
 
-      <p> {"See More >"}</p>
+      <NavLink
+        className="link"
+        to={`/cocktailinfo/${cocktail.id}`}
+        state={{ cocktail }}
+      >
+        {"See More >"}
+      </NavLink>
     </article>
   );
 }
