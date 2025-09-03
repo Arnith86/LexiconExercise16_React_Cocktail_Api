@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { fetchSingleCocktail } from "../api-fetcher";
 import { Spinner } from "../components/Spinner";
+import { FAVORITES_KEY } from "../constants";
+import { isFavorite, toggleFavorite } from "../helper/toggleFavorite";
 
 export const HomeView = () => {
   const [randomCocktail, setRandomCocktail] = useState<ICocktail | null>(null);
@@ -17,6 +19,17 @@ export const HomeView = () => {
     getRandomCocktail();
   }, []);
 
+  /**Here until refactor is finished */
+  const [favorite, setFavorite] = useState<boolean>(
+    isFavorite(FAVORITES_KEY, randomCocktail?.id)
+  );
+
+  /**Here until refactor is finished */
+  function onFavoriteToggle(): void {
+    toggleFavorite(FAVORITES_KEY, randomCocktail?.id);
+    setFavorite(isFavorite(FAVORITES_KEY, randomCocktail?.id));
+  }
+
   return (
     <main className="home-page">
       <p>This is the homeView!</p>
@@ -28,7 +41,11 @@ export const HomeView = () => {
       </nav>
 
       {randomCocktail ? (
-        <CocktailCard cocktail={randomCocktail} />
+        <CocktailCard
+          cocktail={randomCocktail}
+          isFavorite={favorite}
+          onFavoriteToggle={onFavoriteToggle}
+        />
       ) : (
         <Spinner />
       )}

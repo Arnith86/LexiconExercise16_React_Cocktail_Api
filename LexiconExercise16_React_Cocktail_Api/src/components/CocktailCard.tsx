@@ -7,12 +7,21 @@ import { FAVORITES_KEY } from "../constants";
 
 interface ICocktailProp {
   cocktail: ICocktail;
+  isFavorite: boolean;
+  onFavoriteToggle: () => void;
 }
 
-export function CocktailCard({ cocktail }: ICocktailProp): ReactElement {
+export function CocktailCard({
+  cocktail,
+  isFavorite,
+  onFavoriteToggle,
+}: ICocktailProp): ReactElement {
   return (
     <article className="cocktail-card">
-      <FavoriteButton item={cocktail.id} keyString={FAVORITES_KEY} />
+      <FavoriteButton
+        isFavorite={isFavorite}
+        onFavoriteToggle={onFavoriteToggle}
+      />
       <FigureImage
         className={"cocktail-image"}
         url={cocktail.thumbnail}

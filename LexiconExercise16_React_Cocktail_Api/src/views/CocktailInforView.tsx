@@ -17,9 +17,9 @@ export const CocktailInfoView = () => {
   );
 
   /**Here until refactor is finished */
-  useEffect(() => {
-    setFavorite;
-  }, [favorite]);
+  // useEffect(() => {
+  //   setFavorite;
+  // }, [favorite]);
 
   /**Here until refactor is finished */
   function onFavoriteToggle(): void {
