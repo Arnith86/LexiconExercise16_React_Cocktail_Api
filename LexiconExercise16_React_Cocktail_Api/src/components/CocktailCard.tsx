@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import type { ICocktail } from "../mapRawCocktailData";
+import type { ICocktail } from "../helper/mapRawCocktailData";
 import { NavLink } from "react-router";
 import { FigureImage } from "./FigureImage";
 

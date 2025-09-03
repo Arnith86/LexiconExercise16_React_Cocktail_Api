@@ -1,5 +1,5 @@
 import { Navigate, useParams } from "react-router";
-import type { ICocktail } from "../mapRawCocktailData";
+import type { ICocktail } from "../helper/mapRawCocktailData";
 import { useEffect, useState, type ReactElement, type ReactNode } from "react";
 import { fetchSingleCocktail } from "../api-fetcher";
 import { FigureImage } from "../components/FigureImage";

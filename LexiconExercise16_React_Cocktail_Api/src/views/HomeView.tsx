@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import type { ICocktail } from "../mapRawCocktailData";
+import type { ICocktail } from "../helper/mapRawCocktailData";
 import { CocktailCard } from "../components/CocktailCard";
 import { useEffect, useState } from "react";
 import { Button } from "../components/Button";

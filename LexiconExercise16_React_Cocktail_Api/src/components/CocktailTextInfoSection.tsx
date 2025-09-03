@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import { Instructions } from "./Instruction";
-import type { ICocktail } from "../mapRawCocktailData";
+import type { ICocktail } from "../helper/mapRawCocktailData";
 
 interface ICocktailTextInfoSectionProp {
   cocktail: ICocktail;

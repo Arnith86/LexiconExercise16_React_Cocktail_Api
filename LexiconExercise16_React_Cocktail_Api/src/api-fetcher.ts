@@ -1,4 +1,7 @@
-import { mapRawCocktailData, type ICocktail } from "./mapRawCocktailData";
+import {
+  mapRawCocktailData,
+  type ICocktail,
+} from "./helper/mapRawCocktailData";
 
 export function fetchSingleCocktail(): Promise<ICocktail>;
 export function fetchSingleCocktail(id?: number): Promise<ICocktail>;

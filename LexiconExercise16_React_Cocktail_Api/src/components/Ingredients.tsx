@@ -1,5 +1,5 @@
 import { type ReactElement, type ReactNode } from "react";
-import type { IIngredient } from "../mapRawCocktailData";
+import type { IIngredient } from "../helper/mapRawCocktailData";
 import { Ingredient } from "./IngredientCard";
 
 interface IIngredientsProp {
