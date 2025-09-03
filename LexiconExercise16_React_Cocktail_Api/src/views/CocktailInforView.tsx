@@ -6,6 +6,8 @@ import { FigureImage } from "../components/FigureImage";
 import { TagButtons } from "../components/TagButtons";
 import { Instructions } from "../components/Instruction";
 import { Ingredients } from "../components/Ingredients";
+import { CocktailHeroSection } from "../components/CocktailHeroSection";
+import { CocktailTextInfoSection } from "../components/CocktailTextInfoSection";
 
 export const CocktailInfoView = () => {
   const { id } = useParams();
@@ -29,19 +31,9 @@ export const CocktailInfoView = () => {
     return (
       <>
         <Ingredients ingredients={cocktail.ingredients} />
-        <h2>{cocktail.name}</h2>
-        <FigureImage
-          className="cocktail-thumbnail"
-          url={cocktail.thumbnail}
-          altText={`Image of ${cocktail.name}`}
-        />
-        <p>Category: {cocktail.category}</p>
+        <CocktailHeroSection cocktail={cocktail} />
         <TagButtons tags={cocktail.tags} />
-
-        <section className="instructions">
-          <Instructions header="Instructions" content={cocktail.instructions} />
-          <Instructions header="Glass" content={cocktail.glass} />
-        </section>
+        <CocktailTextInfoSection cocktail={cocktail} />
       </>
     );
   }
