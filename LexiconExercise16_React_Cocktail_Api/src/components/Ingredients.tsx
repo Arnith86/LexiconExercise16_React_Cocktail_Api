@@ -1,29 +1,29 @@
-import { useState, type ReactElement } from "react";
+import { type ReactElement, type ReactNode } from "react";
 import type { IIngredient } from "../mapRawCocktailData";
-import { Image } from "./Image";
-import { fetchIngredientImage } from "../api-fetcher";
+import { Ingredient } from "./IngredientCard";
 
-interface IIngredients {
+interface IIngredientsProp {
   ingredients: IIngredient[];
 }
 
-export function Ingredients({ ingredients }: IIngredients): ReactElement {
-  //   const [ingredientList, setIngredientList] = useState<IIngredient[]>([]);
+export function Ingredients({ ingredients }: IIngredientsProp): ReactElement {
+  function renderIngredient(ing: IIngredient): ReactNode {
+    if (!ing.measure) return <Ingredient ingredient={ing.ingredient} />;
+
+    return (
+      <Ingredient
+        ingredient={ing.ingredient}
+        measure={ing.measure}
+        key={ing.ingredient}
+      />
+    );
+  }
 
   return (
-    <section className="Ingredient-list">
+    <section className="Ingredients">
+      <h2>Ingredients</h2>
       {ingredients.map((ing) => {
-        const imageUrl = fetchIngredientImage(ing.ingredient);
-        return (
-          <section className="Ingredient">
-            <Image
-              className={"ingredient-image"}
-              url={imageUrl}
-              altText={`${ing.ingredient} image`}
-            />
-            <p>{`${ing.measure} ${ing.ingredient}`}</p>
-          </section>
-        );
+        return renderIngredient(ing);
       })}
     </section>
   );

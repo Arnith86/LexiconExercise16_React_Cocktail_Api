@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import type { ICocktail } from "../mapRawCocktailData";
 import { NavLink } from "react-router";
-import { Image } from "./Image";
+import { FigureImage } from "./FigureImage";
 
 interface ICocktailProp {
   cocktail: ICocktail;
@@ -10,7 +10,7 @@ interface ICocktailProp {
 export function CocktailCard({ cocktail }: ICocktailProp): ReactElement {
   return (
     <article className="cocktail-card">
-      <Image
+      <FigureImage
         className={"cocktail-image"}
         url={cocktail.thumbnail}
         altText={`image of a ${cocktail.name}`}

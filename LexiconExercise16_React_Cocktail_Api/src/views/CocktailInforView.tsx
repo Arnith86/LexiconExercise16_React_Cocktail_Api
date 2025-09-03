@@ -2,7 +2,7 @@ import { Navigate, useParams } from "react-router";
 import type { ICocktail } from "../mapRawCocktailData";
 import { useEffect, useState, type ReactElement, type ReactNode } from "react";
 import { fetchSingleCocktail } from "../api-fetcher";
-import { Image } from "../components/Image";
+import { FigureImage } from "../components/FigureImage";
 import { TagButtons } from "../components/TagButtons";
 import { Instructions } from "../components/Instruction";
 import { Ingredients } from "../components/Ingredients";
@@ -30,7 +30,7 @@ export const CocktailInfoView = () => {
       <>
         <Ingredients ingredients={cocktail.ingredients} />
         <h2>{cocktail.name}</h2>
-        <Image
+        <FigureImage
           className="cocktail-thumbnail"
           url={cocktail.thumbnail}
           altText={`Image of ${cocktail.name}`}
