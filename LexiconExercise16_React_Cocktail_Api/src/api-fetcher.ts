@@ -1,3 +1,4 @@
+import type { ImageSize } from "./constants";
 import {
   mapRawCocktailData,
   type ICocktail,
@@ -22,8 +23,11 @@ export async function fetchSingleCocktail(id?: number): Promise<ICocktail> {
   return cocktail;
 }
 
-export function fetchIngredientImage(name: string): string {
-  return `https://www.thecocktaildb.com/images/ingredients/${name}-small.png`;
+export function fetchIngredientImage(name: string, size?: ImageSize): string {
+  if (size)
+    return `https://www.thecocktaildb.com/images/ingredients/${name}-${size}.png`;
+
+  return `https://www.thecocktaildb.com/images/ingredients/${name}.png`;
 }
 
 export async function fetchIngredient(name: string): Promise<IIngredientData> {

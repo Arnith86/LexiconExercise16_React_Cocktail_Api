@@ -11,7 +11,7 @@ interface IIngredientCardProp {
 export function Ingredient(props: IIngredientCardProp): ReactElement {
   const { ingredient, measure } = props;
 
-  const imageUrl = fetchIngredientImage(ingredient);
+  const imageUrl = fetchIngredientImage(ingredient, "small");
 
   return (
     <NavLink to={`/ingredient/${ingredient}`}>
