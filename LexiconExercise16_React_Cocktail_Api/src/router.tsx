@@ -6,7 +6,7 @@ import {
 import App from "./App";
 import { HomeView } from "./views/HomeView";
 import { SearchView } from "./views/SearchView";
-import { CocktailInfoView } from "./views/CocktailInforView";
+import { CocktailInfoView } from "./views/CocktailInfoView";
 import { FavoritesView } from "./views/FavoritesView";
 import { IngredientView } from "./views/IngredientView";
 

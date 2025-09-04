@@ -1,15 +1,15 @@
 import type { ReactElement } from "react";
 
-interface IInstructionProp {
+interface ITextSectionProp {
   header: string;
   content: string;
 }
 
-export function Instructions(props: IInstructionProp): ReactElement {
+export function TextSection(props: ITextSectionProp): ReactElement {
   const { header, content } = props;
 
   return (
-    <section>
+    <section className="TextSection">
       <h3>{header}</h3>
       <p>{content}</p>
     </section>
