@@ -6,10 +6,11 @@ import { Button } from "../components/Button";
 import { fetchSingleCocktail } from "../api-fetcher";
 import { Spinner } from "../components/Spinner";
 import { FAVORITES_KEY } from "../constants";
-import { isFavorite, toggleFavorite } from "../helper/toggleFavorite";
+import { useToggleFavorite } from "../hooks/useToggleFavorite";
 
 export const HomeView = () => {
   const [randomCocktail, setRandomCocktail] = useState<ICocktail | null>(null);
+  const favorite = useToggleFavorite<string>(FAVORITES_KEY);
 
   const getRandomCocktail = async () => {
     fetchSingleCocktail().then(setRandomCocktail);
@@ -19,15 +20,8 @@ export const HomeView = () => {
     getRandomCocktail();
   }, []);
 
-  /**Here until refactor is finished */
-  const [favorite, setFavorite] = useState<boolean>(
-    isFavorite(FAVORITES_KEY, randomCocktail?.id)
-  );
-
-  /**Here until refactor is finished */
   function onFavoriteToggle(): void {
-    toggleFavorite(FAVORITES_KEY, randomCocktail?.id);
-    setFavorite(isFavorite(FAVORITES_KEY, randomCocktail?.id));
+    randomCocktail && favorite.actions.toggleFavorite(randomCocktail.id);
   }
 
   return (
@@ -43,7 +37,7 @@ export const HomeView = () => {
       {randomCocktail ? (
         <CocktailCard
           cocktail={randomCocktail}
-          isFavorite={favorite}
+          isFavorite={favorite.actions.isFavorite(randomCocktail.id)}
           onFavoriteToggle={onFavoriteToggle}
         />
       ) : (

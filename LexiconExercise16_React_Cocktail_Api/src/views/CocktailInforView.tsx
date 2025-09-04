@@ -5,29 +5,18 @@ import { fetchSingleCocktail } from "../api-fetcher";
 import { Ingredients } from "../components/Ingredients";
 import { CocktailHeroSection } from "../components/CocktailHeroSection";
 import { CocktailTextInfoSection } from "../components/CocktailTextInfoSection";
-import { isFavorite, toggleFavorite } from "../helper/toggleFavorite";
 import { FAVORITES_KEY } from "../constants";
+import { useToggleFavorite } from "../hooks/useToggleFavorite";
 
 export const CocktailInfoView = () => {
   const { id } = useParams();
-
-  /**Here until refactor is finished */
-  const [favorite, setFavorite] = useState<boolean>(
-    isFavorite(FAVORITES_KEY, id)
-  );
-
-  /**Here until refactor is finished */
-  // useEffect(() => {
-  //   setFavorite;
-  // }, [favorite]);
-
-  /**Here until refactor is finished */
-  function onFavoriteToggle(): void {
-    toggleFavorite(FAVORITES_KEY, id);
-    setFavorite(isFavorite(FAVORITES_KEY, id));
-  }
-
   if (id === undefined) return <Navigate replace to="/" />;
+
+  const favorite = useToggleFavorite<string>(FAVORITES_KEY);
+
+  function onFavoriteToggle(): void {
+    favorite.actions.toggleFavorite(id!);
+  }
 
   const [cocktail, setCocktail] = useState<ICocktail | null>(null);
 
@@ -48,7 +37,7 @@ export const CocktailInfoView = () => {
         <Ingredients ingredients={cocktail.ingredients} />
         <CocktailHeroSection
           cocktail={cocktail}
-          isFavorite={favorite}
+          isFavorite={favorite.actions.isFavorite(id!)}
           onFavoriteToggle={onFavoriteToggle}
         />
         <CocktailTextInfoSection cocktail={cocktail} />
