@@ -1,25 +1,22 @@
-import type { ReactElement } from "react";
+import { useContext, type ReactElement } from "react";
 import type { ICocktail } from "../../helper/mapRawCocktailData";
 import { NavLink } from "react-router";
 import { FigureImage } from "../FigureImage";
 import { FavoriteButton } from "../FavoriteButton";
+import { FavoritesContext } from "../../context/FavoritesContext";
 
 interface ICocktailProp {
   cocktail: ICocktail;
-  isFavorite: boolean;
-  onFavoriteToggle: () => void;
 }
 
-export function CocktailCard({
-  cocktail,
-  isFavorite,
-  onFavoriteToggle,
-}: ICocktailProp): ReactElement {
+export function CocktailCard({ cocktail }: ICocktailProp): ReactElement {
+  const favoritesContext = useContext(FavoritesContext);
+
   return (
     <article className="cocktail-card">
       <FavoriteButton
-        isFavorite={isFavorite}
-        onFavoriteToggle={onFavoriteToggle}
+        isFavorite={favoritesContext.isFavorite(cocktail)}
+        onFavoriteToggle={() => favoritesContext.toggleFavorite(cocktail)}
       />
       <FigureImage
         className={"cocktail-image"}

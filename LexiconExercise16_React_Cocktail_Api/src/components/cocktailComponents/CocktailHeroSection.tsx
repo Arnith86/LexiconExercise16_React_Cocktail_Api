@@ -1,26 +1,25 @@
-import { type ReactElement } from "react";
+import { useContext, type ReactElement } from "react";
 import { FigureImage } from "../FigureImage";
 import { TagButtons } from "../TagButtons";
 import type { ICocktail } from "../../helper/mapRawCocktailData";
 import { FavoriteButton } from "../FavoriteButton";
+import { FavoritesContext } from "../../context/FavoritesContext";
 
 interface ICocktailHeroSectionProp {
   cocktail: ICocktail;
-  isFavorite: boolean;
-  onFavoriteToggle: () => void;
 }
 
 export function CocktailHeroSection({
   cocktail,
-  isFavorite,
-  onFavoriteToggle,
 }: ICocktailHeroSectionProp): ReactElement {
+  const favoritesContext = useContext(FavoritesContext);
+
   return (
     <section className="cocktail-hero-section">
       <h2>{cocktail.name}</h2>
       <FavoriteButton
-        isFavorite={isFavorite}
-        onFavoriteToggle={onFavoriteToggle}
+        isFavorite={favoritesContext.isFavorite(cocktail)}
+        onFavoriteToggle={() => favoritesContext.toggleFavorite(cocktail)}
       />
       <FigureImage
         className="cocktail-thumbnail"
