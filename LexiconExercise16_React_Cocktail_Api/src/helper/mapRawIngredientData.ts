@@ -1,10 +1,10 @@
 export interface IIngredientData {
   id: number;
   name: string;
-  description: string;
+  description?: string;
   type: string;
   alcohol: boolean;
-  abv: number;
+  abv?: number;
 }
 
 export function mapRawIngredientData(rawIngredient: any): IIngredientData {
@@ -14,6 +14,6 @@ export function mapRawIngredientData(rawIngredient: any): IIngredientData {
     description: rawIngredient.strDescription,
     type: rawIngredient.strType,
     alcohol: rawIngredient.strAlcohol.toLowerCase() === "yes",
-    abv: parseFloat(rawIngredient.strABV) || 0,
+    abv: parseFloat(rawIngredient.strABV),
   };
 }
