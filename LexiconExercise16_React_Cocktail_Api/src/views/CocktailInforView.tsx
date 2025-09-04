@@ -2,11 +2,11 @@ import { Navigate, useParams } from "react-router";
 import type { ICocktail } from "../helper/mapRawCocktailData";
 import { useEffect, useState, type ReactElement } from "react";
 import { fetchSingleCocktail } from "../api-fetcher";
-import { Ingredients } from "../components/Ingredients";
-import { CocktailHeroSection } from "../components/CocktailHeroSection";
-import { CocktailTextInfoSection } from "../components/CocktailTextInfoSection";
+import { CocktailIngredients } from "../components/cocktailComponents/CocktailIngredients";
+import { CocktailHeroSection } from "../components/cocktailComponents/CocktailHeroSection";
 import { FAVORITES_KEY } from "../constants";
 import { useToggleFavorite } from "../hooks/useToggleFavorite";
+import { CocktailTextInfoSection } from "../components/cocktailComponents/CocktailTextInfoSection";
 
 export const CocktailInfoView = () => {
   const { id } = useParams();
@@ -34,7 +34,7 @@ export const CocktailInfoView = () => {
 
     return (
       <>
-        <Ingredients ingredients={cocktail.ingredients} />
+        <CocktailIngredients ingredients={cocktail.ingredients} />
         <CocktailHeroSection
           cocktail={cocktail}
           isFavorite={favorite.actions.isFavorite(id!)}

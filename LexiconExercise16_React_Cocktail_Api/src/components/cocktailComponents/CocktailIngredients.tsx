@@ -1,13 +1,15 @@
 import { type ReactElement, type ReactNode } from "react";
-import type { IIngredient } from "../helper/mapRawCocktailData";
-import { Ingredient } from "./IngredientCard";
+import type { IIngredient } from "../../helper/mapRawCocktailData";
+import { Ingredient } from "../ingredientComponents/IngredientCard";
 
-interface IIngredientsProp {
+interface ICocktailIngredientsProp {
   ingredients: IIngredient[];
 }
 
-export function Ingredients({ ingredients }: IIngredientsProp): ReactElement {
-  function renderIngredient(ing: IIngredient): ReactNode {
+export function CocktailIngredients({
+  ingredients,
+}: ICocktailIngredientsProp): ReactElement {
+  function renderCocktailIngredient(ing: IIngredient): ReactNode {
     if (!ing.measure) return <Ingredient ingredient={ing.ingredient} />;
 
     return (
@@ -23,7 +25,7 @@ export function Ingredients({ ingredients }: IIngredientsProp): ReactElement {
     <section className="Ingredients">
       <h2>Ingredients</h2>
       {ingredients.map((ing) => {
-        return renderIngredient(ing);
+        return renderCocktailIngredient(ing);
       })}
     </section>
   );

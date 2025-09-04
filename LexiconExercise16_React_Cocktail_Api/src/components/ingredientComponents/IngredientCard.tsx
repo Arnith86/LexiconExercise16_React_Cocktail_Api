@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
-import { fetchIngredientImage } from "../api-fetcher";
-import { FigureImage } from "./FigureImage";
+import { fetchIngredientImage } from "../../api-fetcher";
+import { FigureImage } from "../FigureImage";
 
 interface IIngredientCardProp {
   ingredient: string;

@@ -1,8 +1,8 @@
 import { type ReactElement } from "react";
-import { FigureImage } from "./FigureImage";
-import { TagButtons } from "./TagButtons";
-import type { ICocktail } from "../helper/mapRawCocktailData";
-import { FavoriteButton } from "./FavoriteButton";
+import { FigureImage } from "../FigureImage";
+import { TagButtons } from "../TagButtons";
+import type { ICocktail } from "../../helper/mapRawCocktailData";
+import { FavoriteButton } from "../FavoriteButton";
 
 interface ICocktailHeroSectionProp {
   cocktail: ICocktail;

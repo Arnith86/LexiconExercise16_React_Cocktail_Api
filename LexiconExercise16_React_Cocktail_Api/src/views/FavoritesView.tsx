@@ -1,7 +1,7 @@
 import { type ICocktail } from "../helper/mapRawCocktailData";
 import { useEffect, useState, type ReactNode } from "react";
 import { FAVORITES_KEY } from "../constants";
-import { CocktailCard } from "../components/CocktailCard";
+import { CocktailCard } from "../components/cocktailComponents/CocktailCard";
 import { fetchSingleCocktail } from "../api-fetcher";
 import { useToggleFavorite } from "../hooks/useToggleFavorite";
 

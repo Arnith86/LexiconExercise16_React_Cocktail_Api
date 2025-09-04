@@ -1,8 +1,8 @@
 import type { ReactElement } from "react";
-import type { ICocktail } from "../helper/mapRawCocktailData";
+import type { ICocktail } from "../../helper/mapRawCocktailData";
 import { NavLink } from "react-router";
-import { FigureImage } from "./FigureImage";
-import { FavoriteButton } from "./FavoriteButton";
+import { FigureImage } from "../FigureImage";
+import { FavoriteButton } from "../FavoriteButton";
 
 interface ICocktailProp {
   cocktail: ICocktail;
