@@ -1,4 +1,4 @@
-import type { ImageSize } from "./constants";
+import type { ImageSize } from "./helper/constants";
 import {
   mapRawCocktailData,
   type ICocktail,

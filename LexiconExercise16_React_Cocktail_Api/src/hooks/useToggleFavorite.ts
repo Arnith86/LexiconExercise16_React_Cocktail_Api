@@ -13,26 +13,34 @@ type UseToggleFavoriteReturn<T> = {
   };
 };
 
-export function useToggleFavorite<T>(key: string): UseToggleFavoriteReturn<T> {
+interface IItem {
+  id: string;
+}
+
+export function useToggleFavorite<T extends IItem>(
+  key: string
+): UseToggleFavoriteReturn<T> {
   const [favorites, setFavorites] = useState<T[]>(loadFromLocalStorage(key));
 
   function getFavorites(): T[] {
     return loadFromLocalStorage(key);
   }
 
-  function isFavorite(id: T): boolean {
-    return getFavorites().includes(id);
+  function isFavorite(item: T): boolean {
+    return getFavorites().some((f) => f.id === item.id);
   }
 
-  function addFavorite(id: T): void {
+  function addFavorite(item: T): void {
     const storedFavorites: T[] = loadFromLocalStorage(key);
-    const updatedFavorites: T[] = [...storedFavorites, id];
+    const updatedFavorites: T[] = [...storedFavorites, item];
     saveFavorite(updatedFavorites);
   }
 
-  function removeFavorite(id: T): void {
+  function removeFavorite(item: T): void {
     const storedFavorites: T[] = loadFromLocalStorage(key);
-    const updatedFavorites: T[] = storedFavorites.filter((f) => f !== id);
+    const updatedFavorites: T[] = storedFavorites.filter(
+      (f) => f.id !== item.id
+    );
     saveFavorite(updatedFavorites);
   }
 
@@ -41,9 +49,9 @@ export function useToggleFavorite<T>(key: string): UseToggleFavoriteReturn<T> {
     setFavorites(favorites);
   }
 
-  function toggleFavorite(id: T): void {
-    if (isFavorite(id)) removeFavorite(id);
-    else addFavorite(id);
+  function toggleFavorite(item: T): void {
+    if (isFavorite(item)) removeFavorite(item);
+    else addFavorite(item);
   }
 
   return { favorites, actions: { getFavorites, isFavorite, toggleFavorite } };

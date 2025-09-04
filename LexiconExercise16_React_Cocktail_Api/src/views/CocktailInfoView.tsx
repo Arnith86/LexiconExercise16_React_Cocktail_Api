@@ -4,7 +4,7 @@ import { useEffect, useState, type ReactElement } from "react";
 import { fetchSingleCocktail } from "../api-fetcher";
 import { CocktailIngredients } from "../components/cocktailComponents/CocktailIngredients";
 import { CocktailHeroSection } from "../components/cocktailComponents/CocktailHeroSection";
-import { FAVORITES_KEY } from "../constants";
+import { FAVORITES_KEY } from "../helper/constants";
 import { useToggleFavorite } from "../hooks/useToggleFavorite";
 import { CocktailTextInfoSection } from "../components/cocktailComponents/CocktailTextInfoSection";
 
@@ -12,12 +12,7 @@ export const CocktailInfoView = () => {
   const { id } = useParams();
   if (id === undefined) return <Navigate replace to="/" />;
 
-  const favorite = useToggleFavorite<string>(FAVORITES_KEY);
-
-  function onFavoriteToggle(): void {
-    favorite.actions.toggleFavorite(id!);
-  }
-
+  const favorite = useToggleFavorite<ICocktail>(FAVORITES_KEY);
   const [cocktail, setCocktail] = useState<ICocktail | null>(null);
 
   useEffect(() => {
@@ -29,6 +24,10 @@ export const CocktailInfoView = () => {
       .catch((err) => console.log("Error fetching cocktail", err));
   }, []);
 
+  function onFavoriteToggle(): void {
+    favorite.actions.toggleFavorite(cocktail!);
+  }
+
   function renderCocktailInfo(): ReactElement {
     if (!cocktail) return <div className="loader"></div>;
 
@@ -37,7 +36,7 @@ export const CocktailInfoView = () => {
         <CocktailIngredients ingredients={cocktail.ingredients} />
         <CocktailHeroSection
           cocktail={cocktail}
-          isFavorite={favorite.actions.isFavorite(id!)}
+          isFavorite={favorite.actions.isFavorite(cocktail)}
           onFavoriteToggle={onFavoriteToggle}
         />
         <CocktailTextInfoSection cocktail={cocktail} />

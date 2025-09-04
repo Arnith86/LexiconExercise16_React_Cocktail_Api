@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import { Button } from "../components/Button";
 import { fetchSingleCocktail } from "../api-fetcher";
 import { Spinner } from "../components/Spinner";
-import { FAVORITES_KEY } from "../constants";
+import { FAVORITES_KEY } from "../helper/constants";
 import { useToggleFavorite } from "../hooks/useToggleFavorite";
 
 export const HomeView = () => {
   const [randomCocktail, setRandomCocktail] = useState<ICocktail | null>(null);
-  const favorite = useToggleFavorite<string>(FAVORITES_KEY);
+  const favorite = useToggleFavorite<ICocktail>(FAVORITES_KEY);
 
   const getRandomCocktail = async () => {
     fetchSingleCocktail().then(setRandomCocktail);
@@ -21,7 +21,7 @@ export const HomeView = () => {
   }, []);
 
   function onFavoriteToggle(): void {
-    randomCocktail && favorite.actions.toggleFavorite(randomCocktail.id);
+    randomCocktail && favorite.actions.toggleFavorite(randomCocktail);
   }
 
   return (
@@ -37,7 +37,7 @@ export const HomeView = () => {
       {randomCocktail ? (
         <CocktailCard
           cocktail={randomCocktail}
-          isFavorite={favorite.actions.isFavorite(randomCocktail.id)}
+          isFavorite={favorite.actions.isFavorite(randomCocktail)}
           onFavoriteToggle={onFavoriteToggle}
         />
       ) : (
