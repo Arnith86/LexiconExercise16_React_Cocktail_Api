@@ -6,11 +6,9 @@ import {
 
 type UseToggleFavoriteReturn<T> = {
   favorites: T[];
-  actions: {
-    getFavorites(): T[];
-    isFavorite(id: T): boolean;
-    toggleFavorite(id: T): void;
-  };
+  getFavorites(): T[];
+  isFavorite(id: T): boolean;
+  toggleFavorite(id: T): void;
 };
 
 interface IItem {
@@ -54,5 +52,5 @@ export function useToggleFavorite<T extends IItem>(
     else addFavorite(item);
   }
 
-  return { favorites, actions: { getFavorites, isFavorite, toggleFavorite } };
+  return { favorites, getFavorites, isFavorite, toggleFavorite };
 }
