@@ -29,11 +29,7 @@ export function CocktailCard({
 
       <h2 className="cocktail-name">{cocktail.name}</h2>
 
-      <NavLink
-        className="link"
-        to={`/cocktailinfo/${cocktail.id}`}
-        state={{ cocktail }}
-      >
+      <NavLink className="text-link" to={`/cocktailinfo/${cocktail.id}`}>
         {"See More >"}
       </NavLink>
     </article>
