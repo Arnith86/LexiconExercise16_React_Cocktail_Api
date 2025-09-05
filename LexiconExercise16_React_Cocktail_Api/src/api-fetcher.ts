@@ -18,9 +18,20 @@ export async function fetchSingleCocktail(id?: number): Promise<ICocktail> {
 
   const result = await fetch(url);
   const data = await result.json();
-  const cocktail = mapRawCocktailData(data.drinks[0]);
 
-  return cocktail;
+  return mapRawCocktailData(data.drinks[0]);
+}
+
+export async function fetchCocktails(name?: string): Promise<ICocktail[]> {
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
+
+  const result = await fetch(url);
+  const data = await result.json();
+  const cocktails: ICocktail[] = data.drinks.map((c: any) =>
+    mapRawCocktailData(c)
+  );
+
+  return cocktails;
 }
 
 export function fetchIngredientImage(name: string, size?: ImageSize): string {
