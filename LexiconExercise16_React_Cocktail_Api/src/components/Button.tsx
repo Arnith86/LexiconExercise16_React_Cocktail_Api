@@ -4,7 +4,7 @@ interface IButtonProp {
   children: ReactNode;
   className: string;
   buttonType: "button" | "reset" | "submit";
-  onClick?: () => void;
+  onClick?: (number?: number) => void;
 }
 
 /**

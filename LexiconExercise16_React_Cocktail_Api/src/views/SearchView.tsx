@@ -1,10 +1,8 @@
-import { NavLink } from "react-router";
 import { BasicSearchForm } from "../components/drinkSearch/BasicSearchForm";
-import { useContext, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import type { ICocktail } from "../helper/mapRawCocktailData";
 import { fetchCocktails } from "../api-fetcher";
-import { PAGE_SIZE } from "../helper/constants";
-import { usePaginate } from "../hooks/usePaginate";
+
 import { SearchResultList } from "../components/drinkSearch/SearchResultList";
 
 export const SearchView = () => {

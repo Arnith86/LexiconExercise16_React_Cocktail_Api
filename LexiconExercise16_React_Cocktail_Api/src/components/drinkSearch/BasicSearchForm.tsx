@@ -1,6 +1,5 @@
 import type { FormEvent, ReactElement } from "react";
 import { Button } from "../Button";
-import { Icon } from "../Icon";
 
 interface IBasicSearchFormProp {
   onFormSubmit: (event: FormEvent<HTMLFormElement>) => void;
