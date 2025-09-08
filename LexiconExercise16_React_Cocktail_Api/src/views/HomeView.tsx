@@ -1,44 +1,32 @@
-import { NavLink } from "react-router";
-import type { ICocktail } from "../helper/mapRawCocktailData";
+import { Await, NavLink, useLoaderData } from "react-router";
 import { CocktailCard } from "../components/cocktailComponents/CocktailCard";
-import { useEffect, useState } from "react";
+import { Suspense } from "react";
 import { Button } from "../components/Button";
-import { fetchSingleCocktail } from "../api-fetcher";
 import { Spinner } from "../components/Spinner";
+import type { IHomeViewDeferredLoaderReturn } from "../pageNavigation/loader";
+import type { ICocktail } from "../helper/mapRawCocktailData";
 
 export const HomeView = () => {
-  const [randomCocktail, setRandomCocktail] = useState<ICocktail | null>(null);
-
-  const getRandomCocktail = async () => {
-    fetchSingleCocktail().then(setRandomCocktail);
-  };
-
-  useEffect(() => {
-    getRandomCocktail();
-  }, []);
+  const { randomCocktail } = useLoaderData<IHomeViewDeferredLoaderReturn>();
 
   return (
     <main className="home-page">
-      <p>This is the homeView!</p>
-      <nav>
-        {/**Here for testing */}
-        <NavLink className="link" to="/ingredient">
-          Ingredient Info
-        </NavLink>
-      </nav>
+      <p>One of many cocktails found in this Cocktail-Wiki</p>
 
-      {randomCocktail ? (
-        <CocktailCard cocktail={randomCocktail} />
-      ) : (
-        <Spinner />
-      )}
-      <Button
-        buttonType="button"
-        className="random-cocktail-button"
-        onClick={getRandomCocktail}
-      >
-        New random cocktail!
-      </Button>
+      <Suspense fallback={<Spinner />}>
+        <Await
+          resolve={randomCocktail}
+          errorElement={<div>Place and error message here!</div>}
+        >
+          {(rc: ICocktail) => <CocktailCard cocktail={rc} />}
+        </Await>
+      </Suspense>
+
+      <NavLink className="link" to="/">
+        <Button buttonType="button" className="random-cocktail-button">
+          New random cocktail!
+        </Button>
+      </NavLink>
     </main>
   );
 };

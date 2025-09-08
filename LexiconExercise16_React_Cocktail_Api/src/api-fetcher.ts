@@ -17,6 +17,7 @@ export async function fetchSingleCocktail(id?: number): Promise<ICocktail> {
     : "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
   const result = await fetch(url);
+  console.log(result);
   const data = await result.json();
 
   return mapRawCocktailData(data.drinks[0]);
