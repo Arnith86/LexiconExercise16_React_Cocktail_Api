@@ -9,14 +9,22 @@ import { SearchView } from "../views/SearchView";
 import { CocktailInfoView } from "../views/CocktailInfoView";
 import { FavoritesView } from "../views/FavoritesView";
 import { IngredientView } from "../views/IngredientView";
-import { HomeViewDeferredLoader } from "./loader";
+import { SingleCocktailDeferredLoader } from "./loader";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index element={<HomeView />} loader={HomeViewDeferredLoader} />
+      <Route
+        index
+        element={<HomeView />}
+        loader={SingleCocktailDeferredLoader}
+      />
       <Route path="/search" element={<SearchView />} />
-      <Route path="/cocktailinfo/:id" element={<CocktailInfoView />} />
+      <Route
+        path="/cocktailinfo/:id"
+        element={<CocktailInfoView />}
+        loader={SingleCocktailDeferredLoader}
+      />
       <Route path="/favorites" element={<FavoritesView />} />
       <Route path="/ingredient/:name" element={<IngredientView />} />
     </Route>

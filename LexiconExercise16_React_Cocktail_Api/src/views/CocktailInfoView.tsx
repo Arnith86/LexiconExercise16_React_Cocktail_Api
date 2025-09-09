@@ -1,34 +1,28 @@
-import { Navigate, useParams } from "react-router";
-import type { ICocktail } from "../helper/mapRawCocktailData";
-import { useEffect, useState, type ReactElement } from "react";
-import { fetchSingleCocktail } from "../api-fetcher";
+import { Await, useLoaderData } from "react-router";
+import { Suspense, type ReactElement } from "react";
 import { CocktailIngredients } from "../components/cocktailComponents/CocktailIngredients";
 import { CocktailHeroSection } from "../components/cocktailComponents/CocktailHeroSection";
 import { CocktailTextInfoSection } from "../components/cocktailComponents/CocktailTextInfoSection";
+import type { ISingleCocktailDeferredReturn } from "../pageNavigation/loader";
+import { Spinner } from "../components/Spinner";
 
 export const CocktailInfoView = () => {
-  const { id } = useParams();
-  if (id === undefined) return <Navigate replace to="/" />;
-
-  const [cocktail, setCocktail] = useState<ICocktail | null>(null);
-
-  useEffect(() => {
-    if (!id) return;
-    const cocktailId = parseInt(id, 10);
-
-    fetchSingleCocktail(cocktailId)
-      .then(setCocktail)
-      .catch((err) => console.log("Error fetching cocktail", err));
-  }, []);
+  const { cocktail } = useLoaderData<ISingleCocktailDeferredReturn>();
 
   function renderCocktailInfo(): ReactElement {
-    if (!cocktail) return <div className="loader"></div>;
-
     return (
       <>
-        <CocktailIngredients ingredients={cocktail.ingredients} />
-        <CocktailHeroSection cocktail={cocktail} />
-        <CocktailTextInfoSection cocktail={cocktail} />
+        <Suspense fallback={<Spinner />}>
+          <Await resolve={cocktail} errorElement={"Error fetching cocktail"}>
+            {(c) => (
+              <>
+                <CocktailIngredients ingredients={c.ingredients} />
+                <CocktailHeroSection cocktail={c} />
+                <CocktailTextInfoSection cocktail={c} />
+              </>
+            )}
+          </Await>
+        </Suspense>
       </>
     );
   }

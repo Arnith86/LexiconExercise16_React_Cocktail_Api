@@ -3,11 +3,12 @@ import { CocktailCard } from "../components/cocktailComponents/CocktailCard";
 import { Suspense } from "react";
 import { Button } from "../components/Button";
 import { Spinner } from "../components/Spinner";
-import type { IHomeViewDeferredLoaderReturn } from "../pageNavigation/loader";
 import type { ICocktail } from "../helper/mapRawCocktailData";
+import type { ISingleCocktailDeferredReturn } from "../pageNavigation/loader";
 
 export const HomeView = () => {
-  const { randomCocktail } = useLoaderData<IHomeViewDeferredLoaderReturn>();
+  const { cocktail: randomCocktail } =
+    useLoaderData<ISingleCocktailDeferredReturn>();
 
   return (
     <main className="home-page">
