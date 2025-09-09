@@ -15,7 +15,7 @@ interface IItem {
   id: string;
 }
 
-export function useToggleFavorite<T extends IItem>(
+export function useFavoriteManipulation<T extends IItem>(
   key: string
 ): UseToggleFavoriteReturn<T> {
   const [favorites, setFavorites] = useState<T[]>(loadFromLocalStorage(key));

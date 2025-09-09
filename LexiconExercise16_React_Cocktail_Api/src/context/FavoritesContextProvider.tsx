@@ -1,8 +1,8 @@
 import type { ReactElement, ReactNode } from "react";
-import { useToggleFavorite } from "../hooks/useToggleFavorite";
 import { FAVORITES_KEY } from "../helper/constants";
 import { FavoritesContext, type IFavoritesContext } from "./FavoritesContext";
 import type { ICocktail } from "../helper/mapRawCocktailData";
+import { useFavoriteManipulation } from "../hooks/useFavoriteManipulation";
 
 interface IFavoritesContextProviderProps {
   children: ReactNode;
@@ -12,7 +12,7 @@ interface IFavoritesContextProviderProps {
 export function FavoritesContextProvider({
   children,
 }: IFavoritesContextProviderProps): ReactElement {
-  const favorites = useToggleFavorite<ICocktail>(FAVORITES_KEY);
+  const favorites = useFavoriteManipulation<ICocktail>(FAVORITES_KEY);
 
   const values: IFavoritesContext = {
     favorites: favorites.favorites,

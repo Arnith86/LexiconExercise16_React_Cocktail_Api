@@ -9,7 +9,10 @@ import { SearchView } from "../views/SearchView";
 import { CocktailInfoView } from "../views/CocktailInfoView";
 import { FavoritesView } from "../views/FavoritesView";
 import { IngredientView } from "../views/IngredientView";
-import { SingleCocktailDeferredLoader } from "./loader";
+import {
+  FavoriteCocktailsDeferredLoader,
+  SingleCocktailDeferredLoader,
+} from "./loader";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,7 +28,11 @@ export const router = createBrowserRouter(
         element={<CocktailInfoView />}
         loader={SingleCocktailDeferredLoader}
       />
-      <Route path="/favorites" element={<FavoritesView />} />
+      <Route
+        path="/favorites"
+        element={<FavoritesView />}
+        loader={FavoriteCocktailsDeferredLoader}
+      />
       <Route path="/ingredient/:name" element={<IngredientView />} />
     </Route>
   )
