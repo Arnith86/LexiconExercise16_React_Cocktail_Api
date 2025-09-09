@@ -17,7 +17,6 @@ export async function fetchSingleCocktail(id?: number): Promise<ICocktail> {
     : "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
   const result = await fetch(url);
-  console.log(result);
   const data = await result.json();
 
   return mapRawCocktailData(data.drinks[0]);
@@ -36,10 +35,11 @@ export async function fetchCocktails(name?: string): Promise<ICocktail[]> {
 }
 
 export function fetchIngredientImage(name: string, size?: ImageSize): string {
+  const encodedName = encodeURIComponent(name);
   if (size)
-    return `https://www.thecocktaildb.com/images/ingredients/${name}-${size}.png`;
+    return `https://www.thecocktaildb.com/images/ingredients/${encodedName}-${size}.png`;
 
-  return `https://www.thecocktaildb.com/images/ingredients/${name}.png`;
+  return `https://www.thecocktaildb.com/images/ingredients/${encodedName}.png`;
 }
 
 export async function fetchIngredient(name: string): Promise<IIngredientData> {

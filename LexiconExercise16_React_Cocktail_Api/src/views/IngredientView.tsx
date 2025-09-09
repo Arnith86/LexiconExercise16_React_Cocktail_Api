@@ -1,48 +1,49 @@
-import { useEffect, useState, type ReactElement } from "react";
-import { Navigate, useParams } from "react-router";
-import { fetchIngredient, fetchIngredientImage } from "../api-fetcher";
+import { Suspense, type ReactElement } from "react";
+import { Await, useLoaderData } from "react-router";
 import type { IIngredientData } from "../helper/mapRawIngredientData";
-import { FigureImage } from "../components/FigureImage";
+
 import { TextSection } from "../components/TextSection";
+import type { IIngredientDataDeferredReturn } from "../pageNavigation/loader";
+import { Spinner } from "../components/Spinner";
+import { fetchIngredientImage } from "../api-fetcher";
+import { FigureImage } from "../components/FigureImage";
 
 export const IngredientView = () => {
-  const { name } = useParams<{ name: string }>();
-  const [ingredient, setIngredient] = useState<IIngredientData | null>(null);
+  const { ingredientData } = useLoaderData<IIngredientDataDeferredReturn>();
 
-  if (!name) return <Navigate replace to={"/"} />;
+  const renderIngredientView = (
+    ingredientData: IIngredientData
+  ): ReactElement => {
+    const ingredientImage = fetchIngredientImage(ingredientData.name);
 
-  const ingredientImageUrl = fetchIngredientImage(name);
-
-  useEffect(() => {
-    fetchIngredient(name)
-      .then(setIngredient)
-      .catch((err) => {
-        throw new Error("Ingredient could not be found..", err);
-      });
-  }, []);
-
-  const renderIngredientView = (): ReactElement => {
-    if (ingredient) {
+    if (ingredientData) {
       return (
         <>
-          <h2>{ingredient.name}</h2>
+          <h2>{ingredientData.name}</h2>
+
           <FigureImage
             className={"ingredient-view-image"}
-            url={ingredientImageUrl}
-            altText={`Image of ${name}`}
+            url={ingredientImage}
+            altText={`Image of ${ingredientData.name}`}
           />
+
           <TextSection
             header={"Description"}
-            content={ingredient.description ? ingredient.description : "N/A"}
+            content={
+              ingredientData.description ? ingredientData.description : "N/A"
+            }
           />
+
           <TextSection
             header={"Alcoholic"}
-            content={ingredient.alcohol ? "Yes" : "No"}
+            content={ingredientData.alcohol ? "Yes" : "No"}
           />
-          <TextSection header={"Type"} content={ingredient.type} />
+
+          <TextSection header={"Type"} content={ingredientData.type} />
+
           <TextSection
             header={"ABV ( alcohol by volume )"}
-            content={ingredient.abv ? `${ingredient.abv}% ` : "N/A"}
+            content={ingredientData.abv ? `${ingredientData.abv}% ` : "N/A"}
           />
         </>
       );
@@ -51,5 +52,13 @@ export const IngredientView = () => {
     return <div className="loader" />;
   };
 
-  return <main>{renderIngredientView()}</main>;
+  return (
+    <main>
+      <Suspense fallback={<Spinner />}>
+        <Await resolve={ingredientData}>
+          {(ingD) => renderIngredientView(ingD)}
+        </Await>
+      </Suspense>
+    </main>
+  );
 };
