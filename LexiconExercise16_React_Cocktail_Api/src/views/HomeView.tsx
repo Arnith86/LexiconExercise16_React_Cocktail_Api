@@ -4,11 +4,11 @@ import { Suspense } from "react";
 import { Button } from "../components/Button";
 import { Spinner } from "../components/Spinner";
 import type { ICocktail } from "../helper/mapRawCocktailData";
-import type { IAppDeferredReturn } from "../pageNavigation/loader";
 import { AwaitError } from "../components/AwaitError";
+import type { IHomeDeferredReturn } from "../pageNavigation/loader";
 
 export const HomeView = () => {
-  const { cocktail: randomCocktail } = useLoaderData<IAppDeferredReturn>();
+  const { cocktail: randomCocktail } = useLoaderData<IHomeDeferredReturn>();
 
   return (
     <main className="home-page">

@@ -9,10 +9,15 @@ import type { IIngredientData } from "../helper/mapRawIngredientData";
 import { SearchOptions } from "../helper/constants";
 
 export interface IAppDeferredReturn {
-  cocktail: ICocktail;
-  categoryType: string[];
-  ingredientType: string[];
-  glassType: string[];
+  searchCategory: {
+    categoryType: string[];
+    ingredientType: string[];
+    glassType: string[];
+  };
+}
+
+export interface IHomeDeferredReturn {
+  cocktail: Promise<ICocktail>;
 }
 
 export interface IIngredientDataDeferredReturn {
@@ -28,21 +33,23 @@ export interface ISearchCategoryBlockingReturn {
 }
 
 export async function AppDeferredLoader(): Promise<IAppDeferredReturn> {
-  const [cocktail, categoryType, ingredientType, glassType] = await Promise.all(
-    [
-      fetchSingleCocktail(),
-      fetchSearchTypeOptions(SearchOptions.CATEGORY),
-      fetchSearchTypeOptions(SearchOptions.INGREDIENT),
-      fetchSearchTypeOptions(SearchOptions.GLASS),
-    ]
-  );
+  const [categoryType, ingredientType, glassType] = await Promise.all([
+    fetchSearchTypeOptions(SearchOptions.CATEGORY),
+    fetchSearchTypeOptions(SearchOptions.INGREDIENT),
+    fetchSearchTypeOptions(SearchOptions.GLASS),
+  ]);
 
   return {
-    cocktail,
-    categoryType,
-    ingredientType,
-    glassType,
+    searchCategory: {
+      categoryType,
+      ingredientType,
+      glassType,
+    },
   };
+}
+
+export async function HomeDeferredLoader(): Promise<IHomeDeferredReturn> {
+  return { cocktail: fetchSingleCocktail() };
 }
 
 export async function SearchCategoryBlockingLoader(
@@ -73,7 +80,9 @@ export async function IngredientDataDeferredLoader(
   args: LoaderFunctionArgs
 ): Promise<IIngredientDataDeferredReturn> {
   if (!args.params.name) {
-    throw new Error(`Param 'name' not assigned.`);
+    throw new Response("Ingredient name is missing from the URL.", {
+      status: 400,
+    });
   }
 
   return {
