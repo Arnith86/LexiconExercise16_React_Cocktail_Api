@@ -14,7 +14,7 @@ import {
   CocktailInfoViewDeferredLoader,
   HomeDeferredLoader,
   IngredientDataDeferredLoader,
-  SearchCategoryBlockingLoader,
+  SearchCategoryDeferredLoader,
 } from "./loader";
 
 export const router = createBrowserRouter(
@@ -30,7 +30,7 @@ export const router = createBrowserRouter(
       <Route
         path="/search"
         element={<SearchView />}
-        loader={SearchCategoryBlockingLoader}
+        loader={SearchCategoryDeferredLoader}
       />
       <Route
         path="/cocktailinfo/:id"

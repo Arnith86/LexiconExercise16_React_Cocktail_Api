@@ -79,3 +79,18 @@ export async function fetchIngredient(name: string): Promise<IIngredientData> {
   return ingredient;
 }
 
+export async function fetchSearchTypeOptions(
+  type: SearchOptionTypes
+): Promise<string[]> {
+  const result = await fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/list.php?${type}=list`
+  );
+
+  const data = await result.json();
+
+  if (!data.drinks) return [];
+
+  return data.drinks.map(
+    (d: any) => d.strCategory ?? d.strIngredient1 ?? d.strGlass
+  );
+}

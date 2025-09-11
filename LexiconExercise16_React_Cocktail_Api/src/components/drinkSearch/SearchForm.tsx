@@ -1,12 +1,13 @@
 import { useState, type FormEvent, type ReactElement } from "react";
 import { Button } from "../Button";
 import { DropDownOptions } from "./DropDownOptions";
-import {
-  SEARCH_OPTION_CATEGORY,
-  SEARCH_OPTION_GLASS,
-  SEARCH_OPTION_INGREDIENT,
-} from "../../helper/constants";
+
 import { useSearchParams } from "react-router";
+import {
+  SEARCH_TYPE_INGREDIENT,
+  SEARCH_TYPE_CATEGORY,
+  SEARCH_TYPE_GLASS,
+} from "../../helper/constants";
 
 interface IAdvancedSearchFormProp {
   categoryType: string[];
@@ -54,21 +55,21 @@ export function AdvancedSearchForm(
       />
 
       <DropDownOptions
-        optionType={SEARCH_OPTION_INGREDIENT}
+        optionType={SEARCH_TYPE_INGREDIENT}
         options={ingredientType}
         value={ingredients}
         onChange={setIngredients}
       />
 
       <DropDownOptions
-        optionType={SEARCH_OPTION_CATEGORY}
+        optionType={SEARCH_TYPE_CATEGORY}
         options={categoryType}
         value={category}
         onChange={setCategory}
       />
 
       <DropDownOptions
-        optionType={SEARCH_OPTION_GLASS}
+        optionType={SEARCH_TYPE_GLASS}
         options={glassType}
         value={glass}
         onChange={setGlass}
