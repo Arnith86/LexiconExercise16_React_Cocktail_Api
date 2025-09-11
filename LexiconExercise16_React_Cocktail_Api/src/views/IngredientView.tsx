@@ -55,7 +55,10 @@ export const IngredientView = () => {
   return (
     <main>
       <Suspense fallback={<Spinner />}>
-        <Await resolve={ingredientData}>
+        <Await
+          resolve={ingredientData}
+          errorElement={"Ingredient could not be found.."}
+        >
           {(ingD) => renderIngredientView(ingD)}
         </Await>
       </Suspense>

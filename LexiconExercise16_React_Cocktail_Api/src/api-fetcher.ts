@@ -25,16 +25,39 @@ export async function fetchSingleCocktail(id?: number): Promise<ICocktail> {
   return mapRawCocktailData(data.drinks[0]);
 }
 
-export async function fetchCocktails(name?: string): Promise<ICocktail[]> {
-  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
+export async function fetchCocktails(
+  type: string,
+  name: string
+): Promise<ICocktail[]> {
+  const url = getFetchCocktailsUrl(type, name);
+
+  if (!url) throw new Error("Filter option list could not be located.");
 
   const result = await fetch(url);
   const data = await result.json();
-  const cocktails: ICocktail[] = data.drinks.map((c: any) =>
-    mapRawCocktailData(c)
+
+  const cocktails: ICocktail[] = await Promise.all(
+    data.drinks.map((c: { idDrink: number }) => {
+      return fetchSingleCocktail(c.idDrink);
+    })
   );
 
   return cocktails;
+}
+
+function getFetchCocktailsUrl(type: string, name?: string): string | undefined {
+  switch (type) {
+    case "name":
+      return `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
+    case "ingredients":
+      return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${name}`;
+    case "category":
+      return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${name}`;
+    case "glass":
+      return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${name}`;
+    default:
+      break;
+  }
 }
 
 export function fetchIngredientImage(name: string, size?: ImageSize): string {
