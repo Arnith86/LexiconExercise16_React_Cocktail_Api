@@ -1,8 +1,8 @@
 import type { ReactElement, ReactNode } from "react";
-import { FAVORITES_KEY } from "../helper/constants";
+import { FAVORITES_KEY } from "../../helper/constants";
+import type { ICocktail } from "../../helper/mapRawCocktailData";
 import { FavoritesContext, type IFavoritesContext } from "./FavoritesContext";
-import type { ICocktail } from "../helper/mapRawCocktailData";
-import { useFavoriteManipulation } from "../hooks/useFavoriteManipulation";
+import { useFavoriteManipulation } from "../../hooks/useFavoriteManipulation";
 
 interface IFavoritesContextProviderProps {
   children: ReactNode;

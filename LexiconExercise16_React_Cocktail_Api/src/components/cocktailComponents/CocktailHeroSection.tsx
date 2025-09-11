@@ -3,7 +3,7 @@ import { FigureImage } from "../FigureImage";
 import { TagButtons } from "../TagButtons";
 import type { ICocktail } from "../../helper/mapRawCocktailData";
 import { FavoriteButton } from "../FavoriteButton";
-import { FavoritesContext } from "../../context/FavoritesContext";
+import { FavoritesContext } from "../../context/favorites/FavoritesContext";
 
 interface ICocktailHeroSectionProp {
   cocktail: ICocktail;

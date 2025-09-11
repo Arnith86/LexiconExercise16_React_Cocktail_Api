@@ -69,24 +69,27 @@ export async function SearchCategoryDeferredLoader(
   if (!name && !category && !ingredients && !glass)
     return { cocktails: Promise.resolve([]) };
 
-  let cocktails: ICocktail[] = await fetchCocktails(SEARCH_TYPE_NAME, name);
+  const cocktailPromise = fetchCocktails(SEARCH_TYPE_NAME, name).then(
+    (cocktails) => {
+      if (!cocktails) return [];
 
-  const filterCocktails = async () => {
-    if (category) cocktails = cocktails.filter((c) => c.category === category);
+      if (category)
+        cocktails = cocktails.filter((c) => c.category === category);
 
-    if (ingredients)
-      cocktails = cocktails.filter((c) =>
-        c.ingredients.some(
-          (ingredientObject) => ingredientObject.ingredient === ingredients
-        )
-      );
+      if (ingredients)
+        cocktails = cocktails.filter((c) =>
+          c.ingredients.some(
+            (ingredientObject) => ingredientObject.ingredient === ingredients
+          )
+        );
 
-    if (glass) cocktails = cocktails.filter((c) => c.glass === glass);
+      if (glass) cocktails = cocktails.filter((c) => c.glass === glass);
 
-    return cocktails;
-  };
+      return cocktails;
+    }
+  );
 
-  return { cocktails: filterCocktails() };
+  return { cocktails: cocktailPromise };
 }
 
 export async function CocktailInfoViewDeferredLoader(

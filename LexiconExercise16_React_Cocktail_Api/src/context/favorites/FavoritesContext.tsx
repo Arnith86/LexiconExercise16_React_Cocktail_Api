@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { ICocktail } from "../helper/mapRawCocktailData";
+import type { ICocktail } from "../../helper/mapRawCocktailData";
 
 export interface IFavoritesContext {
   favorites: ICocktail[];

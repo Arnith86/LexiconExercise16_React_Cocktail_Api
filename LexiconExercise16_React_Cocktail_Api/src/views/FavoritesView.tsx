@@ -1,10 +1,11 @@
 import { useContext, type ReactNode } from "react";
 import { CocktailCard } from "../components/cocktailComponents/CocktailCard";
+
+import { Spinner } from "../components/Spinner";
 import {
   FavoritesContext,
   type IFavoritesContext,
-} from "../context/FavoritesContext";
-import { Spinner } from "../components/Spinner";
+} from "../context/favorites/FavoritesContext";
 
 export const FavoritesView = () => {
   const favoritesContext = useContext(FavoritesContext);

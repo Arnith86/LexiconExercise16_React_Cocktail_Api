@@ -19,6 +19,8 @@ export function SearchResultList({
   } = usePaginate(list, PAGE_SIZE);
 
   function renderPaginatedList(): ReactNode {
+    if (paginatedList.length === 0) return <p>No cocktail found..</p>;
+
     return (
       <>
         {paginatedList.map((cocktail) => (

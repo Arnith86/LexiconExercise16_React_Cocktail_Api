@@ -3,7 +3,7 @@ import type { ICocktail } from "../../helper/mapRawCocktailData";
 import { NavLink } from "react-router";
 import { FigureImage } from "../FigureImage";
 import { FavoriteButton } from "../FavoriteButton";
-import { FavoritesContext } from "../../context/FavoritesContext";
+import { FavoritesContext } from "../../context/favorites/FavoritesContext";
 
 interface ICocktailProp {
   cocktail: ICocktail;

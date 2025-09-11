@@ -7,6 +7,7 @@ import type {
   ISearchCategoryDeferredReturn,
 } from "../pageNavigation/loader";
 import { Spinner } from "../components/Spinner";
+import { AwaitError } from "../components/AwaitError";
 
 export const SearchView = () => {
   const { cocktails } = useLoaderData<ISearchCategoryDeferredReturn>();
@@ -28,7 +29,7 @@ export const SearchView = () => {
       </Suspense>
 
       <Suspense fallback={<Spinner />}>
-        <Await resolve={cocktails}>
+        <Await resolve={cocktails} errorElement={<AwaitError />}>
           {(c) => <SearchResultList list={c} />}
         </Await>
       </Suspense>

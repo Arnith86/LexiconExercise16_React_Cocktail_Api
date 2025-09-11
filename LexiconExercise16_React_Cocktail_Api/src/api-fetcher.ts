@@ -7,6 +7,11 @@ import {
   mapRawIngredientData,
   type IIngredientData,
 } from "./helper/mapRawIngredientData";
+import {
+  getSessionCocktail,
+  hasSessionCocktail,
+  setSessionCocktail,
+} from "./helper/SessionStorageContainer";
 
 export function fetchSingleCocktail(): Promise<ICocktail>;
 export function fetchSingleCocktail(id?: number): Promise<ICocktail>;
@@ -16,13 +21,21 @@ export async function fetchSingleCocktail(id?: number): Promise<ICocktail> {
     ? `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
     : "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
+  if (id && hasSessionCocktail(id)) {
+    return getSessionCocktail(id)!;
+  }
+
   const result = await fetch(url);
   const data = await result.json();
 
   if (!data.drinks || data.drinks.length === 0)
     throw new Error(`No cocktail found for id=${id ?? "random"}.`);
 
-  return mapRawCocktailData(data.drinks[0]);
+  const cocktail = mapRawCocktailData(data.drinks[0]);
+
+  if (id) setSessionCocktail(parseInt(cocktail.id), cocktail);
+
+  return cocktail;
 }
 
 export async function fetchCocktails(
@@ -35,6 +48,9 @@ export async function fetchCocktails(
 
   const result = await fetch(url);
   const data = await result.json();
+
+  if (!data.drinks || data.drinks === "no data found")
+    throw new Error(`No cocktails found..`);
 
   const cocktails: ICocktail[] = await Promise.all(
     data.drinks.map((c: { idDrink: number }) => {

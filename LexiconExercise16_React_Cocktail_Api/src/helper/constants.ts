@@ -1,4 +1,5 @@
 export const FAVORITES_KEY = "favoriteCocktails";
+export const SESSION_STORAGE_KEY = "sessionStorageCocktails";
 
 export type ImageSize = "small" | "medium" | "large";
 
