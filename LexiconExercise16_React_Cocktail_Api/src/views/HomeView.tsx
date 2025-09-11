@@ -4,21 +4,18 @@ import { Suspense } from "react";
 import { Button } from "../components/Button";
 import { Spinner } from "../components/Spinner";
 import type { ICocktail } from "../helper/mapRawCocktailData";
-import type { ISingleCocktailDeferredReturn } from "../pageNavigation/loader";
+import type { IAppDeferredReturn } from "../pageNavigation/loader";
+import { AwaitError } from "../components/AwaitError";
 
 export const HomeView = () => {
-  const { cocktail: randomCocktail } =
-    useLoaderData<ISingleCocktailDeferredReturn>();
+  const { cocktail: randomCocktail } = useLoaderData<IAppDeferredReturn>();
 
   return (
     <main className="home-page">
       <p>One of many cocktails found in this Cocktail-Wiki</p>
 
       <Suspense fallback={<Spinner />}>
-        <Await
-          resolve={randomCocktail}
-          errorElement={<div>Place and error message here!</div>}
-        >
+        <Await resolve={randomCocktail} errorElement={<AwaitError />}>
           {(rc: ICocktail) => <CocktailCard cocktail={rc} />}
         </Await>
       </Suspense>

@@ -1,4 +1,4 @@
-import type { ImageSize } from "./helper/constants";
+import type { ImageSize, SearchOptionTypes } from "./helper/constants";
 import {
   mapRawCocktailData,
   type ICocktail,
@@ -18,6 +18,9 @@ export async function fetchSingleCocktail(id?: number): Promise<ICocktail> {
 
   const result = await fetch(url);
   const data = await result.json();
+
+  if (!data.drinks || data.drinks.length === 0)
+    throw new Error(`No cocktail found for id=${id ?? "random"}.`);
 
   return mapRawCocktailData(data.drinks[0]);
 }
@@ -52,3 +55,4 @@ export async function fetchIngredient(name: string): Promise<IIngredientData> {
 
   return ingredient;
 }
+

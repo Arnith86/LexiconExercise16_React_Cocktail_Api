@@ -31,16 +31,14 @@ export function PaginationNumbering({
     if (pageIndex + 1 === currentPage) classList.push("active-page-index");
 
     return (
-      <>
-        <Button
-          key={pageIndex}
-          className={classList.join(" ")}
-          buttonType="button"
-          onClick={() => onMoveToPage(pageIndex + 1)}
-        >
-          {pageIndex + 1}
-        </Button>
-      </>
+      <Button
+        key={pageIndex}
+        className={classList.join(" ")}
+        buttonType="button"
+        onClick={() => onMoveToPage(pageIndex + 1)}
+      >
+        {pageIndex + 1}
+      </Button>
     );
   }
 

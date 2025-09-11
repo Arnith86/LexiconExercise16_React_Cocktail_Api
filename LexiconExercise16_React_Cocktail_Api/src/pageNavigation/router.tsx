@@ -10,23 +10,26 @@ import { CocktailInfoView } from "../views/CocktailInfoView";
 import { FavoritesView } from "../views/FavoritesView";
 import { IngredientView } from "../views/IngredientView";
 import {
+  AppDeferredLoader,
+  CocktailInfoViewDeferredLoader,
   IngredientDataDeferredLoader,
-  SingleCocktailDeferredLoader,
+  SearchCategoryBlockingLoader,
 } from "./loader";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
+      <Route index element={<HomeView />} loader={AppDeferredLoader} id="app" />
       <Route
-        index
-        element={<HomeView />}
-        loader={SingleCocktailDeferredLoader}
+        path="/search"
+        element={<SearchView />}
+        loader={SearchCategoryBlockingLoader}
+        // shouldRevalidate={() => false}
       />
-      <Route path="/search" element={<SearchView />} />
       <Route
         path="/cocktailinfo/:id"
         element={<CocktailInfoView />}
-        loader={SingleCocktailDeferredLoader}
+        loader={CocktailInfoViewDeferredLoader}
       />
       <Route path="/favorites" element={<FavoritesView />} />
       <Route
