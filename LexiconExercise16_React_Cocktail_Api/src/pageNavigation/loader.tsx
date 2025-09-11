@@ -19,7 +19,7 @@ export interface IIngredientDataDeferredReturn {
   ingredientData: Promise<IIngredientData>;
 }
 
-export interface ISingleCocktailBlockingReturn {
+export interface ISingleCocktailDeferredReturn {
   cocktail: Promise<ICocktail>;
 }
 
@@ -62,7 +62,7 @@ export async function SearchCategoryBlockingLoader(
 
 export async function CocktailInfoViewDeferredLoader(
   args: LoaderFunctionArgs
-): Promise<ISingleCocktailBlockingReturn> {
+): Promise<ISingleCocktailDeferredReturn> {
   if (!args.params.id)
     throw new Response("Cocktail ID is missing from the URL.", { status: 400 });
 
