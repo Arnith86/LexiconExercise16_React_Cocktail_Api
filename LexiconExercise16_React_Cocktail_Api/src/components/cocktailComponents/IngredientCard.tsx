@@ -15,13 +15,14 @@ export function Ingredient(props: IIngredientCardProp): ReactElement {
 
   return (
     <NavLink to={`/ingredient/${ingredient}`}>
-      <article className="Ingredient">
+      <article className="ingredient-card">
         <FigureImage
           className={"ingredient-image"}
           url={imageUrl}
           altText={`${ingredient} image`}
         />
-        <p>{`${measure} ${ingredient}`}</p>
+        <p>{`${ingredient}`}</p>
+        <p className="ingredient-measure">{`${measure}`}</p>
       </article>
     </NavLink>
   );

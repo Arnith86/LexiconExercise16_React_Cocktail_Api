@@ -1,6 +1,6 @@
 import { type ReactElement, type ReactNode } from "react";
 import type { IIngredient } from "../../helper/mapRawCocktailData";
-import { Ingredient } from "../ingredientComponents/IngredientCard";
+import { Ingredient } from "./IngredientCard";
 
 interface ICocktailIngredientsProp {
   ingredients: IIngredient[];
