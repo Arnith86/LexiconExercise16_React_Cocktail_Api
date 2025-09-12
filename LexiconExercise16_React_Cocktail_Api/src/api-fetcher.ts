@@ -90,6 +90,11 @@ export async function fetchIngredient(name: string): Promise<IIngredientData> {
   );
 
   const data = await result.json();
+
+  if (!data.ingredients || data.ingredients.length === 0) {
+    throw new Error(`No ingredient found for name=${name}`);
+  }
+
   const ingredient: IIngredientData = mapRawIngredientData(data.ingredients[0]);
 
   return ingredient;

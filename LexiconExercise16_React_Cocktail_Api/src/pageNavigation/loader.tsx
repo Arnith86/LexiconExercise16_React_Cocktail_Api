@@ -28,7 +28,10 @@ export interface IHomeDeferredReturn {
 }
 
 export interface IIngredientDataDeferredReturn {
-  ingredientData: Promise<IIngredientData>;
+  ingredient: Promise<{
+    cocktails: ICocktail[];
+    ingredientData: IIngredientData;
+  }>;
 }
 
 export interface ISingleCocktailDeferredReturn {
@@ -110,7 +113,10 @@ export async function IngredientDataDeferredLoader(
     });
   }
 
-  return {
-    ingredientData: fetchIngredient(args.params.name),
-  };
+  const ingredient = Promise.all([
+    fetchCocktails(SEARCH_TYPE_INGREDIENT, args.params.name),
+    fetchIngredient(args.params.name),
+  ]).then(([cocktails, ingredientData]) => ({ cocktails, ingredientData }));
+
+  return { ingredient };
 }
