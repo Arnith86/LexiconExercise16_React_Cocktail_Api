@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  width: 100%;
   margin: 0;
   box-sizing: border-box;
   background: linear-gradient(to top, black, rgb(78, 1, 1));
@@ -26,4 +27,19 @@ body {
 .active-page-index {
   font-weight: bold;
   text-decoration: underline;
+}
+
+.favorite-button,
+.text-link {
+  border: none;
+  background-color: initial;
+  color: var(--main-text-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.favorite-button:hover,
+.text-link:hover {
+  cursor: pointer;
+  color: var(--hover-text-color);
+  transform: scale(1.05);
 }

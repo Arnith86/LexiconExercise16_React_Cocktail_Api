@@ -17,8 +17,10 @@ export const CocktailInfoView = () => {
           <Await resolve={cocktail} errorElement={<AwaitError />}>
             {(c) => (
               <>
-                <CocktailIngredients ingredients={c.ingredients} />
-                <CocktailHeroSection cocktail={c} />
+                <span className="Ingredients-and-hero">
+                  <CocktailHeroSection cocktail={c} />
+                  <CocktailIngredients ingredients={c.ingredients} />
+                </span>
                 <CocktailTextInfoSection cocktail={c} />
               </>
             )}

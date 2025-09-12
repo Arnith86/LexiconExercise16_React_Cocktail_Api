@@ -17,18 +17,3 @@
 .cocktail-card .name-and-favorite {
   display: flex;
 }
-
-.favorite-button,
-.text-link {
-  border: none;
-  background-color: initial;
-  color: var(--main-text-color);
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.favorite-button:hover,
-.text-link:hover {
-  cursor: pointer;
-  color: var(--hover-text-color);
-  transform: scale(1.05);
-}

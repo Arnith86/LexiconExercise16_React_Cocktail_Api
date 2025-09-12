@@ -22,11 +22,13 @@ export function CocktailIngredients({
   }
 
   return (
-    <section className="Ingredients">
+    <section className="cocktail-ingredients">
       <h2>Ingredients</h2>
-      {ingredients.map((ing) => {
-        return renderCocktailIngredient(ing);
-      })}
+      <div className="ingredient-list">
+        {ingredients.map((ing) => {
+          return renderCocktailIngredient(ing);
+        })}
+      </div>
     </section>
   );
 }

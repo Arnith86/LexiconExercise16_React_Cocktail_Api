@@ -16,11 +16,13 @@ export function CocktailHeroSection({
 
   return (
     <section className="cocktail-hero-section">
-      <h2>{cocktail.name}</h2>
-      <FavoriteButton
-        isFavorite={favoritesContext.isFavorite(cocktail)}
-        onFavoriteToggle={() => favoritesContext.toggleFavorite(cocktail)}
-      />
+      <div className="name-and-favorite">
+        <h2>{cocktail.name}</h2>
+        <FavoriteButton
+          isFavorite={favoritesContext.isFavorite(cocktail)}
+          onFavoriteToggle={() => favoritesContext.toggleFavorite(cocktail)}
+        />
+      </div>
       <FigureImage
         className="cocktail-thumbnail"
         url={cocktail.thumbnail}
