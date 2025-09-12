@@ -3,8 +3,8 @@ import { NavLink } from "react-router";
 
 export function Header(): ReactElement {
   return (
-    <>
-      <h1>Cocktail-wiki</h1>
+    <section className="header">
+      <h1>The Cocktail-wiki</h1>
       <nav>
         <NavLink className="link" to="/">
           Home
@@ -16,6 +16,6 @@ export function Header(): ReactElement {
           Favorites
         </NavLink>
       </nav>
-    </>
+    </section>
   );
 }

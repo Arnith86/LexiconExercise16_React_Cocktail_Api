@@ -1,3 +1,35 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  background: linear-gradient(to top, black, rgb(78, 1, 1));
+  background-attachment: fixed;
+
+  --main-text-color: #dcdada;
+  --hover-text-color: #8b6e6e;
+
+  color: var(--main-text-color);
+  font-family: "Merriweather", serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  padding: 5%;
+}
+figure {
+  max-width: 300px;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
 .active-page-index {
   font-weight: bold;
   text-decoration: underline;
