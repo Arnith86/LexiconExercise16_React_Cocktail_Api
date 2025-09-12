@@ -22,14 +22,6 @@ body {
 #root {
   padding: 3%;
 }
-figure {
-  max-width: 300px;
-}
-
-img {
-  height: 100%;
-  width: 100%;
-}
 
 .active-page-index {
   font-weight: bold;

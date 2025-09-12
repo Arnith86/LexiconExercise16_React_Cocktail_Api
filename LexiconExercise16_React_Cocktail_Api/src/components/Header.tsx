@@ -6,13 +6,13 @@ export function Header(): ReactElement {
     <section className="header">
       <h1>The Cocktail-wiki</h1>
       <nav>
-        <NavLink className="link" to="/">
+        <NavLink className="header-link" to="/">
           Home
         </NavLink>
-        <NavLink className="link" to="/search">
+        <NavLink className="header-link" to="/search">
           Search
         </NavLink>
-        <NavLink className="link" to="/favorites">
+        <NavLink className="header-link" to="/favorites">
           Favorites
         </NavLink>
       </nav>

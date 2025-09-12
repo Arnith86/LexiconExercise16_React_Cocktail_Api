@@ -1,0 +1,34 @@
+.cocktail-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cocktail-card figure {
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.cocktail-card img {
+  height: 100%;
+  width: 100%;
+}
+
+.cocktail-card .name-and-favorite {
+  display: flex;
+}
+
+.favorite-button,
+.text-link {
+  border: none;
+  background-color: initial;
+  color: var(--main-text-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.favorite-button:hover,
+.text-link:hover {
+  cursor: pointer;
+  color: var(--hover-text-color);
+  transform: scale(1.05);
+}

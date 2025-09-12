@@ -14,17 +14,19 @@ export function CocktailCard({ cocktail }: ICocktailProp): ReactElement {
 
   return (
     <article className="cocktail-card">
-      <FavoriteButton
-        isFavorite={favoritesContext.isFavorite(cocktail)}
-        onFavoriteToggle={() => favoritesContext.toggleFavorite(cocktail)}
-      />
       <FigureImage
         className={"cocktail-image"}
         url={cocktail.thumbnail}
         altText={`image of a ${cocktail.name}`}
       />
 
-      <h2 className="cocktail-name">{cocktail.name}</h2>
+      <span className="name-and-favorite">
+        <FavoriteButton
+          isFavorite={favoritesContext.isFavorite(cocktail)}
+          onFavoriteToggle={() => favoritesContext.toggleFavorite(cocktail)}
+        />
+        <h2 className="cocktail-name">{cocktail.name}</h2>
+      </span>
 
       <NavLink className="text-link" to={`/cocktailinfo/${cocktail.id}`}>
         {"See More >"}
