@@ -30,5 +30,5 @@ export const CocktailInfoView = () => {
     );
   }
 
-  return <main className="cocktail-info-page">{renderCocktailInfo()} </main>;
+  return <main className="cocktail-info-view">{renderCocktailInfo()} </main>;
 };

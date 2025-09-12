@@ -9,7 +9,7 @@ export function TextSection(props: ITextSectionProp): ReactElement {
   const { header, content } = props;
 
   return (
-    <section className="TextSection">
+    <section className="text-section">
       <h3>{header}</h3>
       <p>{content}</p>
     </section>
