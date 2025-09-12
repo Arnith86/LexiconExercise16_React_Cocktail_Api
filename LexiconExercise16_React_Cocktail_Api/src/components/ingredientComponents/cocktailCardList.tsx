@@ -9,6 +9,8 @@ export function CocktailCardList(props: ICocktailCardList): ReactElement {
   const { cocktails } = props;
 
   function renderCocktailList(): ReactNode {
+    if (cocktails.length === 0) return <></>;
+
     return cocktails.map((c) => <CocktailCard key={c.id} cocktail={c} />);
   }
 

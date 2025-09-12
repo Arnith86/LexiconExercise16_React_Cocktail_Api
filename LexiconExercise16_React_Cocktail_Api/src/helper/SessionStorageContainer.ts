@@ -40,7 +40,5 @@ export function hasSessionCocktail(id: number): boolean {
 }
 
 export function getSessionCocktail(id: number): ICocktail {
-  const temp = cocktailCache.get(id);
-  console.log(temp);
   return cocktailCache.get(id)!;
 }
