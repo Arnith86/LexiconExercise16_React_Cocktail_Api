@@ -7,6 +7,7 @@ body {
   background-attachment: fixed;
 
   --main-text-color: #dcdada;
+  --nav-text-color: #fffefe;
   --hover-text-color: #8b6e6e;
 
   color: var(--main-text-color);
@@ -19,7 +20,7 @@ body {
 }
 
 #root {
-  padding: 5%;
+  padding: 3%;
 }
 figure {
   max-width: 300px;
