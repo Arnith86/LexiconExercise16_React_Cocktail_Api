@@ -1,10 +1,14 @@
 @import url(./base.css);
 @import url(./pages/home-view/homeview.css);
+
 @import url(./pages/cocktail-info-view/cocktailInfoView.css);
 @import url(./pages/cocktail-info-view/cocktailHeroSection.css);
 @import url(./pages/cocktail-info-view/cocktailIngredients.css);
 @import url(./pages/cocktail-info-view/cocktailTextSection.css);
 @import url(./pages/cocktail-info-view/ingredientCard.css);
+
+@import url(./pages/favorite-view/favoriteView.css);
+
 @import url(./general-components/header.css);
 @import url(./general-components/cocktailCard.css);
 @import url(./general-components/icon.css);

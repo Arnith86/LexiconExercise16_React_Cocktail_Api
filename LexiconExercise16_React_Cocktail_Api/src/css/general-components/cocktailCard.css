@@ -2,11 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding: 3%;
+  box-shadow: 0 0 7px rgba(255, 255, 255, 0.3);
 }
 
 .cocktail-card figure {
-  min-width: 200px;
-  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 350px;
+  max-height: 350px;
+  margin: 0;
+  background-color: aliceblue;
+  box-shadow: 0 0 7px rgba(23, 23, 23, 0.3);
 }
 
 .cocktail-card img {

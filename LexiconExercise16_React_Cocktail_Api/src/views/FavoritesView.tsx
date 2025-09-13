@@ -22,7 +22,7 @@ export const FavoritesView = () => {
   }
 
   return (
-    <main>
+    <main className="favorite-view">
       <h2>Your Favorites</h2>
       <section className="favorite-list">{renderFavorites()}</section>
     </main>
