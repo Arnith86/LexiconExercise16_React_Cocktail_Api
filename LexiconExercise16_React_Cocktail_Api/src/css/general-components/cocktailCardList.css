@@ -1,0 +1,20 @@
+.cocktail-card-list,
+.favorite-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cocktail-card-list .cocktail-card figure,
+.favorite-list .cocktail-card figure {
+  min-width: 150px;
+}
+
+.cocktail-card-list .cocktail-card,
+.favorite-list .cocktail-card {
+  background-color: rgba(92, 23, 23, 0.698);
+  max-width: min-content;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+}

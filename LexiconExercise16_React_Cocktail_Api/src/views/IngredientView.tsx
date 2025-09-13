@@ -9,7 +9,7 @@ import { AwaitError } from "../components/AwaitError";
 export const IngredientView = () => {
   const { ingredient } = useLoaderData<IIngredientDataDeferredReturn>();
   return (
-    <main>
+    <main className="ingredient-view">
       <Suspense fallback={<Spinner />}>
         <Await resolve={ingredient} errorElement={<AwaitError />}>
           {(ingD) => (

@@ -16,7 +16,7 @@ export function IngredientData(props: IIngredientDataProp): ReactElement {
     const ingredientImage = fetchIngredientImage(ingredientData.name);
 
     return (
-      <section className="ingredientView">
+      <section className="ingredient-data">
         <section className="ingredient-hero-section">
           <h2>{ingredientData.name}</h2>
 
@@ -25,6 +25,23 @@ export function IngredientData(props: IIngredientDataProp): ReactElement {
             url={ingredientImage}
             altText={`Image of ${ingredientData.name}`}
           />
+
+          <div className="ingredient-meta-data">
+            <TextSection
+              header={"Alcoholic"}
+              content={ingredientData.alcohol ? "Yes" : "No"}
+            />
+
+            <TextSection
+              header={"Type"}
+              content={ingredientData.type ? `${ingredientData.type} ` : "N/A"}
+            />
+
+            <TextSection
+              header={"ABV ( alcohol by volume )"}
+              content={ingredientData.abv ? `${ingredientData.abv}% ` : "N/A"}
+            />
+          </div>
         </section>
 
         <section className="ingredient-text-info">
@@ -33,21 +50,6 @@ export function IngredientData(props: IIngredientDataProp): ReactElement {
             content={
               ingredientData.description ? ingredientData.description : "N/A"
             }
-          />
-
-          <TextSection
-            header={"Alcoholic"}
-            content={ingredientData.alcohol ? "Yes" : "No"}
-          />
-
-          <TextSection
-            header={"Type"}
-            content={ingredientData.type ? `${ingredientData.type} ` : "N/A"}
-          />
-
-          <TextSection
-            header={"ABV ( alcohol by volume )"}
-            content={ingredientData.abv ? `${ingredientData.abv}% ` : "N/A"}
           />
         </section>
       </section>

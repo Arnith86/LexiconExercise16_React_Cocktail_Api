@@ -25,7 +25,7 @@ export function SearchResultList({
       <>
         {paginatedList.map((cocktail) => (
           <nav key={cocktail.id}>
-            <NavLink className="link" to={`/cocktailinfo/${cocktail.id}`}>
+            <NavLink className="text-link" to={`/cocktailinfo/${cocktail.id}`}>
               {cocktail.name}
             </NavLink>
           </nav>

@@ -15,6 +15,9 @@ export function CocktailCardList(props: ICocktailCardList): ReactElement {
   }
 
   return (
-    <section className="cocktail-card-list">{renderCocktailList()}</section>
+    <section className="included-in">
+      <h2>Included in</h2>
+      <section className="cocktail-card-list">{renderCocktailList()}</section>
+    </section>
   );
 }

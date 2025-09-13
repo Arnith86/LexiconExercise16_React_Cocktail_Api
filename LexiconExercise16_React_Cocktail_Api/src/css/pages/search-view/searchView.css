@@ -1,0 +1,32 @@
+.search-view {
+  display: flex;
+  flex-direction: column;
+  padding-block: 1rem;
+  gap: 1rem;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-name-input,
+.dropbox-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-form .left-side {
+  flex: 2;
+}
+
+.search-form .right-side {
+  flex: 3;
+}
+
+.search-result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

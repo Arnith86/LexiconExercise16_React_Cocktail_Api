@@ -26,11 +26,14 @@ export function DropDownOptions(props: IDropDownOptionsProp): ReactElement {
   }
 
   return (
-    <section>
-      <label htmlFor={`${optionType}`}>{`${optionType}:`}</label>
+    <section className="dropbox-input">
+      <label
+        htmlFor={`${optionType}`}
+        className="left-side"
+      >{`${optionType}:`}</label>
       <select
         name={`${optionType}`}
-        className={`${optionType}-options-dropdown`}
+        className={`${optionType}-options-dropdown right-side`}
         id={`${optionType}`}
         onChange={(e) => onChange(e.target.value)}
         value={value}

@@ -8,6 +8,7 @@ body {
   background-attachment: fixed;
 
   --main-text-color: #dcdada;
+  --secondary-text-color: #dcdadac9;
   --nav-text-color: #fffefe;
   --hover-text-color: #8b6e6e;
 

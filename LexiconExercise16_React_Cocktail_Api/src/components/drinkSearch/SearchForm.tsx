@@ -15,9 +15,7 @@ interface IAdvancedSearchFormProp {
   ingredientType: string[];
 }
 
-export function AdvancedSearchForm(
-  props: IAdvancedSearchFormProp
-): ReactElement {
+export function SearchForm(props: IAdvancedSearchFormProp): ReactElement {
   const { categoryType, glassType, ingredientType } = props;
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -42,17 +40,22 @@ export function AdvancedSearchForm(
   }
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <label htmlFor="name">Drink name:</label>
-      <input
-        type="text"
-        required
-        id="cocktail-name-input"
-        name="name"
-        placeholder="name.."
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+    <form className="search-form" onSubmit={handleFormSubmit}>
+      <div className="form-name-input">
+        <label htmlFor="name" className="left-side">
+          Drink name:
+        </label>
+        <input
+          className="right-side"
+          type="text"
+          required
+          id="cocktail-name-input"
+          name="name"
+          placeholder="name.."
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
 
       <DropDownOptions
         optionType={SEARCH_TYPE_INGREDIENT}
