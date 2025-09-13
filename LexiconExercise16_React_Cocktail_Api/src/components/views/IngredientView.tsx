@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import { Await, useLoaderData } from "react-router";
-import type { IIngredientDataDeferredReturn } from "../pageNavigation/loader";
-import { Spinner } from "../components/Spinner";
-import { IngredientData } from "../components/ingredientComponents/IngredientData";
-import { CocktailCardList } from "../components/ingredientComponents/cocktailCardList";
-import { AwaitError } from "../components/AwaitError";
+import type { IIngredientDataDeferredReturn } from "../../pageNavigation/loader";
+import { Spinner } from "../Spinner";
+import { IngredientData } from "../ingredientComponents/IngredientData";
+import { CocktailCardList } from "../ingredientComponents/cocktailCardList";
+import { AwaitError } from "../AwaitError";
 
 export const IngredientView = () => {
   const { ingredient } = useLoaderData<IIngredientDataDeferredReturn>();

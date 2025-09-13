@@ -4,11 +4,11 @@ import {
   Route,
 } from "react-router";
 import App from "../App";
-import { HomeView } from "../views/HomeView";
-import { SearchView } from "../views/SearchView";
-import { CocktailInfoView } from "../views/CocktailInfoView";
-import { FavoritesView } from "../views/FavoritesView";
-import { IngredientView } from "../views/IngredientView";
+import { HomeView } from "../components/views/HomeView";
+import { SearchView } from "../components/views/SearchView";
+import { CocktailInfoView } from "../components/views/CocktailInfoView";
+import { FavoritesView } from "../components/views/FavoritesView";
+import { IngredientView } from "../components/views/IngredientView";
 import {
   AppDeferredLoader,
   CocktailInfoViewDeferredLoader,

@@ -1,11 +1,11 @@
 import { Await, NavLink, useLoaderData } from "react-router";
-import { CocktailCard } from "../components/cocktailComponents/CocktailCard";
+import { CocktailCard } from "../cocktailComponents/CocktailCard";
 import { Suspense } from "react";
-import { Button } from "../components/Button";
-import { Spinner } from "../components/Spinner";
-import type { ICocktail } from "../helper/mapRawCocktailData";
-import { AwaitError } from "../components/AwaitError";
-import type { IHomeDeferredReturn } from "../pageNavigation/loader";
+import { Button } from "../Button";
+import { Spinner } from "../Spinner";
+import type { ICocktail } from "../../helper/mapRawCocktailData";
+import { AwaitError } from "../AwaitError";
+import type { IHomeDeferredReturn } from "../../pageNavigation/loader";
 
 export const HomeView = () => {
   const { cocktail: randomCocktail } = useLoaderData<IHomeDeferredReturn>();

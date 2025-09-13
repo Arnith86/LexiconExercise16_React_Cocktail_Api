@@ -1,13 +1,13 @@
 import { Suspense } from "react";
-import { SearchResultList } from "../components/drinkSearch/SearchResultList";
-import { SearchForm } from "../components/drinkSearch/SearchForm";
+import { SearchResultList } from "../drinkSearch/SearchResultList";
+import { SearchForm } from "../drinkSearch/SearchForm";
 import { Await, useLoaderData, useRouteLoaderData } from "react-router";
 import type {
   IAppDeferredReturn,
   ISearchCategoryDeferredReturn,
-} from "../pageNavigation/loader";
-import { Spinner } from "../components/Spinner";
-import { AwaitError } from "../components/AwaitError";
+} from "../../pageNavigation/loader";
+import { Spinner } from "../Spinner";
+import { AwaitError } from "../AwaitError";
 
 export const SearchView = () => {
   const { cocktails } = useLoaderData<ISearchCategoryDeferredReturn>();

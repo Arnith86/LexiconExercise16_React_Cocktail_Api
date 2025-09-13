@@ -1,11 +1,11 @@
 import { Await, useLoaderData } from "react-router";
 import { Suspense, type ReactElement } from "react";
-import { CocktailIngredients } from "../components/cocktailComponents/CocktailIngredients";
-import { CocktailHeroSection } from "../components/cocktailComponents/CocktailHeroSection";
-import { CocktailTextInfoSection } from "../components/cocktailComponents/CocktailTextInfoSection";
-import { Spinner } from "../components/Spinner";
-import type { ISingleCocktailDeferredReturn } from "../pageNavigation/loader";
-import { AwaitError } from "../components/AwaitError";
+import { CocktailIngredients } from "../cocktailComponents/CocktailIngredients";
+import { CocktailHeroSection } from "../cocktailComponents/CocktailHeroSection";
+import { CocktailTextInfoSection } from "../cocktailComponents/CocktailTextInfoSection";
+import { Spinner } from "../Spinner";
+import type { ISingleCocktailDeferredReturn } from "../../pageNavigation/loader";
+import { AwaitError } from "../AwaitError";
 
 export const CocktailInfoView = () => {
   const { cocktail } = useLoaderData<ISingleCocktailDeferredReturn>();
