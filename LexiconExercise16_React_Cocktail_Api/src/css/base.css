@@ -19,10 +19,6 @@ body {
   display: flex;
   justify-content: center;
 }
-/* 
-#root {
-  padding: 3%;
-} */
 
 .active-page-index {
   font-weight: bold;

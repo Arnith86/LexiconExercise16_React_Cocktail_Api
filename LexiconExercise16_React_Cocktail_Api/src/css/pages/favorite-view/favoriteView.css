@@ -13,11 +13,6 @@
   gap: 1rem;
 }
 
-.favorite-list .g-figure.cocktail-image {
-  /* margin: 2rem; */
-  /* background-color: rgba(115, 45, 45, 0.698); */
-}
-
 .favorite-list .cocktail-card figure {
   min-width: 150px;
 }

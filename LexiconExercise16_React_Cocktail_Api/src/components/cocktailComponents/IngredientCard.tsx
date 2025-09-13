@@ -14,7 +14,7 @@ export function Ingredient(props: IIngredientCardProp): ReactElement {
   const imageUrl = fetchIngredientImage(ingredient, "small");
 
   return (
-    <NavLink to={`/ingredient/${ingredient}`}>
+    <NavLink to={`/ingredient/${ingredient}`} className={"ingredient-link"}>
       <article className="ingredient-card">
         <FigureImage
           className={"ingredient-image"}

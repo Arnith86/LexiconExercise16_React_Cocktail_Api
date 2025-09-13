@@ -42,7 +42,7 @@ export function IngredientData(props: IIngredientDataProp): ReactElement {
 
           <TextSection
             header={"Type"}
-            content={ingredientData.type ? `${ingredientData.type}% ` : "N/A"}
+            content={ingredientData.type ? `${ingredientData.type} ` : "N/A"}
           />
 
           <TextSection
