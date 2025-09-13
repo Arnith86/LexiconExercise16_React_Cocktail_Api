@@ -1,7 +1,6 @@
 .ingredient-data {
   display: flex;
   flex-direction: row;
-  /* flex: 1; */
   min-width: 350px;
   max-width: 1000px;
   box-shadow: 0 0 7px rgba(255, 255, 255, 0.3);

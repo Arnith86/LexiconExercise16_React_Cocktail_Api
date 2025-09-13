@@ -26,6 +26,7 @@ body {
   text-decoration: underline;
 }
 
+.pagination-button,
 .favorite-button,
 .text-link {
   border: none;
@@ -34,9 +35,16 @@ body {
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
+.pagination-button:hover,
 .favorite-button:hover,
 .text-link:hover {
   cursor: pointer;
   color: var(--hover-text-color);
   transform: scale(1.05);
+}
+
+.cocktail-card-list,
+.favorite-list {
+  box-shadow: 0 0 7px rgba(255, 255, 255, 0.3);
+  padding: 1rem;
 }

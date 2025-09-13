@@ -4,6 +4,8 @@
   flex: 1;
   min-width: 350px;
   max-width: 800px;
+  box-shadow: 0 0 7px rgba(255, 255, 255, 0.3);
+  padding: 2rem;
 }
 .text-section {
   flex: 1;

@@ -4,6 +4,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 0 7px rgba(255, 255, 255, 0.3);
+  margin: 1rem;
 }
 
 .name-and-favorite {

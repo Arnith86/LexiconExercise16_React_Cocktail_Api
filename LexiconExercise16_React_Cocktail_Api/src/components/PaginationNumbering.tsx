@@ -33,7 +33,7 @@ export function PaginationNumbering({
     return (
       <Button
         key={pageIndex}
-        className={classList.join(" ")}
+        className={`${classList.join(" ")} pagination-button`}
         buttonType="button"
         onClick={() => onMoveToPage(pageIndex + 1)}
       >
@@ -48,7 +48,7 @@ export function PaginationNumbering({
         {nrOfPages > 1 && (
           <section className="pagination-numbers">
             <Button
-              className={"previous-page-button"}
+              className={"previous-page-button pagination-button"}
               buttonType={"button"}
               onClick={onPreviousPage}
             >
@@ -56,7 +56,7 @@ export function PaginationNumbering({
             </Button>
             {renderPaginationNumbers()}
             <Button
-              className={"next-page-button"}
+              className={"next-page-button pagination-button"}
               buttonType={"button"}
               onClick={onNextPage}
             >
