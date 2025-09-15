@@ -8,6 +8,20 @@ interface IIngredientCardProp {
   measure?: string;
 }
 
+/**
+ * Ingredient component
+ *
+ * Renders a clickable card for an ingredient. The card includes:
+ * - An image of the ingredient (fetched via `fetchIngredientImage`).
+ * - The ingredient's name.
+ * - An optional measure (if provided).
+ *
+ * The entire card is wrapped in a `NavLink` that navigates
+ * to the ingredient's detail page.
+ *
+ * @param {IIngredientCardProp} props - The props containing ingredient details.
+ * @returns {ReactElement} A rendered Ingredient card component.
+ */
 export function Ingredient(props: IIngredientCardProp): ReactElement {
   const { ingredient, measure } = props;
 
