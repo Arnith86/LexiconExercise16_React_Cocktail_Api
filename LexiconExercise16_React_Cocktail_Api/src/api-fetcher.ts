@@ -16,6 +16,13 @@ import {
 export function fetchSingleCocktail(): Promise<ICocktail>;
 export function fetchSingleCocktail(id?: number): Promise<ICocktail>;
 
+/**
+ * Fetches a single cocktail.
+ * - If `id` is provided, fetches the cocktail by ID and caches it in session storage.
+ * - If no `id` is provided, fetches a random cocktail.
+ * @param {number} [id] - Optional cocktail ID.
+ * @returns {Promise<ICocktail>} The cocktail data.
+ */
 export async function fetchSingleCocktail(id?: number): Promise<ICocktail> {
   const url = id
     ? `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
@@ -38,6 +45,12 @@ export async function fetchSingleCocktail(id?: number): Promise<ICocktail> {
   return cocktail;
 }
 
+/**
+ * Fetches cocktails filtered by a type and value.
+ * @param {string} type - The type of search (name, ingredients, category, glass).
+ * @param {string} name - The search value.
+ * @returns {Promise<ICocktail[]>} Array of cocktail objects.
+ */
 export async function fetchCocktails(
   type: string,
   name: string
@@ -52,6 +65,7 @@ export async function fetchCocktails(
   if (!data.drinks || data.drinks === "no data found")
     throw new Error(`No cocktails found..`);
 
+  // Map the filtered drinks to full cocktail objects using their IDs
   const cocktails: ICocktail[] = await Promise.all(
     data.drinks.map((c: { idDrink: number }) => {
       return fetchSingleCocktail(c.idDrink);
@@ -61,6 +75,12 @@ export async function fetchCocktails(
   return cocktails;
 }
 
+/**
+ * Returns the correct API URL for fetching cocktails by type.
+ * @param {string} type - Type of search.
+ * @param {string} [name] - Optional search value.
+ * @returns {string | undefined} The API URL.
+ */
 function getFetchCocktailsUrl(type: string, name?: string): string | undefined {
   switch (type) {
     case "name":
@@ -76,6 +96,12 @@ function getFetchCocktailsUrl(type: string, name?: string): string | undefined {
   }
 }
 
+/**
+ * Generates the URL for an ingredient image.
+ * @param {string} name - Ingredient name.
+ * @param {ImageSize} [size] - Optional image size suffix.
+ * @returns {string} Image URL.
+ */
 export function fetchIngredientImage(name: string, size?: ImageSize): string {
   const encodedName = encodeURIComponent(name);
   if (size)
@@ -84,6 +110,11 @@ export function fetchIngredientImage(name: string, size?: ImageSize): string {
   return `https://www.thecocktaildb.com/images/ingredients/${encodedName}.png`;
 }
 
+/**
+ * Fetches ingredient data by name.
+ * @param {string} name - Ingredient name.
+ * @returns {Promise<IIngredientData>} Ingredient details.
+ */
 export async function fetchIngredient(name: string): Promise<IIngredientData> {
   const result = await fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${name}`
@@ -100,6 +131,11 @@ export async function fetchIngredient(name: string): Promise<IIngredientData> {
   return ingredient;
 }
 
+/**
+ * Fetches a list of search options for a given type (category, ingredient, glass).
+ * @param {SearchOptionTypes} type - The search option type.
+ * @returns {Promise<string[]>} Array of option strings.
+ */
 export async function fetchSearchTypeOptions(
   type: SearchOptionTypes
 ): Promise<string[]> {
