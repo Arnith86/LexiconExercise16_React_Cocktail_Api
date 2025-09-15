@@ -6,6 +6,19 @@ interface ICocktailTextInfoSectionProp {
   cocktail: ICocktail;
 }
 
+/**
+ * CocktailTextInfoSection component
+ *
+ * Displays additional information about a cocktail, including:
+ * - The cocktail category
+ * - Preparation instructions
+ * - Recommended glass type
+ *
+ * Each piece of information is rendered using the `TextSection` component.
+ *
+ * @param {ICocktailTextInfoSectionProp} props - Props containing the cocktail object.
+ * @returns {ReactElement} The rendered CocktailTextInfoSection component.
+ */
 export function CocktailTextInfoSection({
   cocktail,
 }: ICocktailTextInfoSectionProp): ReactElement {
