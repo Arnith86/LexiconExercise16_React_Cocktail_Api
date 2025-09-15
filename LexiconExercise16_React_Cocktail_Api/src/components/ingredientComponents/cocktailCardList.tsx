@@ -5,6 +5,18 @@ import { CocktailCard } from "../cocktailComponents/CocktailCard";
 interface ICocktailCardList {
   cocktails: ICocktail[];
 }
+
+/**
+ * CocktailCardList component
+ *
+ * Displays a list of cocktails using the `CocktailCard` component.
+ * - If no cocktails are provided, it renders nothing.
+ * - Each cocktail is passed to `CocktailCard` with a unique key.
+ *
+ * @component
+ * @param {ICocktailCardList} props - The props for the component.
+ * @returns {ReactElement} A section containing a header and a list of cocktail cards.
+ */
 export function CocktailCardList(props: ICocktailCardList): ReactElement {
   const { cocktails } = props;
 
