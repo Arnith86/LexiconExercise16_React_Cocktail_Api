@@ -7,6 +7,23 @@ import { fetchIngredientImage } from "../../api-fetcher";
 interface IIngredientDataProp {
   ingredientData: IIngredientData;
 }
+
+/**
+ * IngredientData component
+ *
+ * Displays detailed information about a single ingredient, including:
+ * - Name
+ * - Image (fetched via `fetchIngredientImage`)
+ * - Metadata: alcoholic status, type, and ABV
+ * - Description text
+ *
+ * The component is split into two main sections:
+ * 1. Hero section: shows the name, image, and metadata
+ * 2. Text info section: shows the description
+ *
+ * @param {IIngredientDataProp} props - Props containing the ingredient data.
+ * @returns {ReactElement} The rendered ingredient data view.
+ */
 export function IngredientData(props: IIngredientDataProp): ReactElement {
   const { ingredientData } = props;
 
