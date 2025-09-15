@@ -9,6 +9,16 @@ interface ICocktailHeroSectionProp {
   cocktail: ICocktail;
 }
 
+/**
+ * CocktailHeroSection component
+ *
+ * Displays the main "hero" section of a cocktail page.
+ * Includes the cocktail name, favorite toggle button,
+ * thumbnail image, and associated tags.
+ *
+ * @param {ICocktailHeroSectionProp} props - Props containing the cocktail object.
+ * @returns {ReactElement} The rendered CocktailHeroSection component.
+ */
 export function CocktailHeroSection({
   cocktail,
 }: ICocktailHeroSectionProp): ReactElement {
