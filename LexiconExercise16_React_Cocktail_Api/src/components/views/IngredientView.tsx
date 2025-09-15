@@ -6,6 +6,21 @@ import { IngredientData } from "../ingredientComponents/IngredientData";
 import { CocktailCardList } from "../ingredientComponents/cocktailCardList";
 import { AwaitError } from "../AwaitError";
 
+/**
+ * IngredientView component
+ *
+ * Displays detailed information about a single ingredient along with the cocktails
+ * that include it.
+ * - Uses `useLoaderData` to fetch ingredient data asynchronously.
+ * - Uses React Router's `<Suspense>` and `<Await>` to handle deferred loading.
+ * - Shows a spinner while loading and an error element if the data fails to load.
+ * - Renders:
+ *    1. `IngredientData` for detailed ingredient information.
+ *    2. `CocktailCardList` for the cocktails that use this ingredient.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered ingredient view page.
+ */
 export const IngredientView = () => {
   const { ingredient } = useLoaderData<IIngredientDataDeferredReturn>();
   return (
