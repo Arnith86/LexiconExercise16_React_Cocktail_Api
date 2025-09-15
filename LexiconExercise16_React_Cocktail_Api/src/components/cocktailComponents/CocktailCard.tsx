@@ -9,6 +9,16 @@ interface ICocktailProp {
   cocktail: ICocktail;
 }
 
+/**
+ * CocktailCard component
+ *
+ * Renders a card displaying information about a cocktail,
+ * including its image, name, favorite toggle button,
+ * and a navigation link to detailed cocktail information.
+ *
+ * @param {ICocktailProp} props - Props containing the cocktail object.
+ * @returns {ReactElement} The rendered CocktailCard component.
+ */
 export function CocktailCard({ cocktail }: ICocktailProp): ReactElement {
   const favoritesContext = useContext(FavoritesContext);
 
