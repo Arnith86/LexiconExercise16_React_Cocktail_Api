@@ -4,10 +4,29 @@ import { Button } from "./Button";
 import { Icon } from "./Icon";
 
 interface IPaginationNumberingProps {
+  /**
+   * Metadata about pagination, including current page and total number of pages.
+   */
   metaData: IPaginateMetaData;
+  /**
+   * Actions to navigate between pages: next, previous, and jump to a specific page.
+   */
   actions: IPaginateActions;
 }
 
+/**
+ * PaginationNumbering component
+ *
+ * Renders a pagination control with:
+ * - Previous and Next buttons.
+ * - Numbered page buttons that highlight the current page.
+ *
+ * Uses `metaData` for page information and `actions` for handling page navigation.
+ *
+ * @component
+ * @param {IPaginationNumberingProps} props - Pagination metadata and actions.
+ * @returns {ReactElement} A pagination control component.
+ */
 export function PaginationNumbering({
   metaData,
   actions,
@@ -15,6 +34,10 @@ export function PaginationNumbering({
   const { currentPage, nrOfPages } = metaData;
   const { onNextPage, onPreviousPage, onMoveToPage } = actions;
 
+  /**
+   * Renders individual numbered page buttons.
+   * Highlights the active page and binds onClick to move to that page.
+   */
   function renderPaginationNumbers(): ReactNode {
     return (
       <>
@@ -25,6 +48,10 @@ export function PaginationNumbering({
     );
   }
 
+  /**
+   * Returns a Button component representing a single page number.
+   * @param pageIndex - zero-based index of the page
+   */
   function setNumberOfPage(pageIndex: number): ReactNode {
     const classList: string[] = ["pagination-number-button"];
 
@@ -42,6 +69,9 @@ export function PaginationNumbering({
     );
   }
 
+  /**
+   * Renders the full pagination section including previous/next buttons and page numbers.
+   */
   function renderPagination(): ReactNode {
     return (
       <>
