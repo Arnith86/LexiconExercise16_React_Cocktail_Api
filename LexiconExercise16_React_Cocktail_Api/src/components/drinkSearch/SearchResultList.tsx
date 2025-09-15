@@ -9,6 +9,19 @@ interface ISearchResultListProps {
   list: ICocktail[];
 }
 
+/**
+ * SearchResultList component
+ *
+ * Renders a paginated list of cocktails retrieved from search results.
+ * - Uses the `usePaginate` hook to handle pagination logic and state.
+ * - Displays cocktail names as `NavLink`s that navigate to each cocktail's detail page.
+ * - Shows a "No cocktail found.." message if the list is empty.
+ * - Includes a pagination control (`PaginationNumbering`) below the results.
+ *
+ * @component
+ * @param {ISearchResultListProps} props - The list of cocktails to render.
+ * @returns {ReactElement} The rendered search results with pagination.
+ */
 export function SearchResultList({
   list,
 }: ISearchResultListProps): ReactElement {
