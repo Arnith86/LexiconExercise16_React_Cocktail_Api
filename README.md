@@ -1,3 +1,20 @@
+# Lexicon Exercise 16 - React Cocktail Api
+
+This project is my solution to the React Cocktail API exercise. It encompasses most, if not all, of the front-end features we have covered throughout this education. The application allows users to search for cocktails by name, category, glass type, or ingredient, view detailed information about individual cocktails, and manage a list of favorite drinks.
+
+It demonstrates the use of:
+
+- React components and composition for modular UI
+- Context API for state management of favorites
+- Hooks like useState, useContext, and custom hooks (usePaginate, useFavoriteManipulation)
+- React Router with deferred loaders and suspense for efficient data fetching
+- TypeScript with interfaces and type safety
+- Local and Session Storage for persisting user data and caching API responses
+
+Overall, this project combines state management, data fetching, pagination, and responsive UI practices, providing a comprehensive demonstration of practical React development skills.
+
+The full description of the exercise can be found below, outlining the required features, API integration, and front-end functionality that this project implements.
+
 ![poster](./assets/poster.png)
 
 # The Cocktail DB
@@ -28,6 +45,7 @@ Your are building a cocktail-wiki that uses data from [The Cocktail DB API](http
 The web application will have atleast three different pages.
 
 ### Meal DB API
+
 If you don't want to create an application that showcases alcoholic drinks, you can instead create an application around the [Meal DB API](https://www.themealdb.com/api.php). It is a 'sister' API, which means it has the same creator and is structured the same way. The requirements below are the same in other words.
 
 ## Requirements
