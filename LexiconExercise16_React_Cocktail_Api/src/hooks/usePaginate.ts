@@ -17,6 +17,18 @@ export interface IPaginate<T> {
   actions: IPaginateActions;
 }
 
+/**
+ * Custom React hook for paginating an array of items
+ *
+ * @template T - Type of the items in the list
+ * @param list - Array of items to paginate
+ * @param pageSize - Number of items per page
+ * @returns An object containing the current page items, metadata, and pagination actions
+ *
+ * @example
+ * const { pageItems, metaData, actions } = usePaginate(myItems, 10);
+ * actions.onNextPage();
+ */
 export function usePaginate<T>(list: T[], pageSize: number): IPaginate<T> {
   const [currentPage, setCurrentPage] = useState<number>(1);
 

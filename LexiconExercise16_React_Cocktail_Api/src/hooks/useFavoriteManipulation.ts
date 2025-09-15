@@ -15,6 +15,16 @@ interface IItem {
   id: string;
 }
 
+/**
+ * Custom hook for managing a list of favorite items in localStorage.
+ *
+ * @template T - Type of the items being favorited, must have an `id` property.
+ * @param key - LocalStorage key under which favorites are stored
+ * @returns Object with current favorites and functions to manipulate them
+ *
+ * @example
+ * const { favorites, toggleFavorite, isFavorite } = useFavoriteManipulation<Cocktail>("favorites");
+ */
 export function useFavoriteManipulation<T extends IItem>(
   key: string
 ): UseToggleFavoriteReturn<T> {
