@@ -42,6 +42,10 @@ export interface ISearchCategoryDeferredReturn {
   cocktails: Promise<ICocktail[]>;
 }
 
+/**
+ * Loader for App-level search options.
+ * Fetches all category, ingredient, and glass types in parallel.
+ */
 export async function AppDeferredLoader(): Promise<IAppDeferredReturn> {
   const searchCategory = Promise.all([
     fetchSearchTypeOptions(SearchOptions.CATEGORY),
@@ -56,10 +60,18 @@ export async function AppDeferredLoader(): Promise<IAppDeferredReturn> {
   return { searchCategory };
 }
 
+/**
+ * Loader for Home page.
+ * Fetches a single random cocktail.
+ */
 export async function HomeDeferredLoader(): Promise<IHomeDeferredReturn> {
   return { cocktail: fetchSingleCocktail() };
 }
 
+/**
+ * Loader for search results based on query parameters.
+ * Filters by name, category, ingredients, and glass.
+ */
 export async function SearchCategoryDeferredLoader(
   args: LoaderFunctionArgs
 ): Promise<ISearchCategoryDeferredReturn> {
@@ -95,6 +107,10 @@ export async function SearchCategoryDeferredLoader(
   return { cocktails: cocktailPromise };
 }
 
+/**
+ * Loader for a single cocktail by ID.
+ * Throws a 400 Response if the ID is missing.
+ */
 export async function CocktailInfoViewDeferredLoader(
   args: LoaderFunctionArgs
 ): Promise<ISingleCocktailDeferredReturn> {
@@ -104,6 +120,11 @@ export async function CocktailInfoViewDeferredLoader(
   return { cocktail: fetchSingleCocktail(parseInt(args.params.id)) };
 }
 
+/**
+ * Loader for ingredient page.
+ * Fetches both the ingredient details and related cocktails in parallel.
+ * Throws a 400 Response if the ingredient name is missing.
+ */
 export async function IngredientDataDeferredLoader(
   args: LoaderFunctionArgs
 ): Promise<IIngredientDataDeferredReturn> {

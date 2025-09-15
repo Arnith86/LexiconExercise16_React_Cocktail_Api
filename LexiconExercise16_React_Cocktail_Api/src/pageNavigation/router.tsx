@@ -17,6 +17,17 @@ import {
   SearchCategoryDeferredLoader,
 } from "./loader";
 
+/**
+ * Application router configuration.
+ *
+ * The router is structured as a nested route tree:
+ * - `/` (root) -> App component with `AppDeferredLoader` for search options.
+ *   - Index route: HomeView, lazy loads a random cocktail.
+ *   - `/search`: SearchView, lazy loads cocktails based on search parameters.
+ *   - `/cocktailinfo/:id`: CocktailInfoView, lazy loads a single cocktail by ID.
+ *   - `/favorites`: FavoritesView, no loader needed.
+ *   - `/ingredient/:name`: IngredientView, lazy loads ingredient data and related cocktails.
+ */
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route
