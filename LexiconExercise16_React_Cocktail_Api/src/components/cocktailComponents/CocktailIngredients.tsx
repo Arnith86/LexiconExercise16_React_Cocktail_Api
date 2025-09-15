@@ -6,6 +6,16 @@ interface ICocktailIngredientsProp {
   ingredients: IIngredient[];
 }
 
+/**
+ * CocktailIngredients component
+ *
+ * Displays the list of ingredients for a given cocktail.
+ * Renders each ingredient using the `Ingredient` component,
+ * including optional measurement information when available.
+ *
+ * @param {ICocktailIngredientsProp} props - Props containing an array of ingredients.
+ * @returns {ReactElement} The rendered CocktailIngredients component.
+ */
 export function CocktailIngredients({
   ingredients,
 }: ICocktailIngredientsProp): ReactElement {
@@ -24,6 +34,7 @@ export function CocktailIngredients({
   return (
     <section className="cocktail-ingredients">
       <h2>Ingredients</h2>
+
       <div className="ingredient-list">
         {ingredients.map((ing) => {
           return renderCocktailIngredient(ing);
