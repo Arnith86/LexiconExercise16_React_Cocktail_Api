@@ -15,6 +15,22 @@ interface IAdvancedSearchFormProp {
   ingredientType: string[];
 }
 
+/**
+ * SearchForm component
+ *
+ * Provides an advanced search form for cocktails.
+ * The form includes:
+ * - A text input for drink name
+ * - Dropdown selectors for ingredient, category, and glass type
+ * - A submit button
+ *
+ * Uses React Router's `useSearchParams` to sync form state with
+ * the URL query parameters, allowing deep linking and bookmarking
+ * of specific search configurations.
+ *
+ * @param {IAdvancedSearchFormProp} props - Props containing available search option lists.
+ * @returns {ReactElement} The rendered search form.
+ */
 export function SearchForm(props: IAdvancedSearchFormProp): ReactElement {
   const { categoryType, glassType, ingredientType } = props;
   const [searchParams, setSearchParams] = useSearchParams();
